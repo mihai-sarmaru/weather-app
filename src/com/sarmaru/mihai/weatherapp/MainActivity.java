@@ -62,19 +62,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		
+		// Set corresponding fragment on tab selection
+		viewPager.setCurrentItem(tab.getPosition());
 	}
 
 	@Override
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void onTabUnselected(Tab tab, FragmentTransaction ft) {	}
 
 	@Override
-	public void onTabReselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void onTabReselected(Tab tab, FragmentTransaction ft) {	}
 }

@@ -8,6 +8,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -39,6 +40,22 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		for (String tabName : tabs) {
 			actionBar.addTab(actionBar.newTab().setText(tabName).setTabListener(this));
 		}
+		
+		// Action for page change
+		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int position) {
+				// Select tab on page change
+				actionBar.setSelectedNavigationItem(position);
+			}
+			
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) { }
+			
+			@Override
+			public void onPageScrollStateChanged(int arg0) { }
+		});
 	}
 
 	@Override

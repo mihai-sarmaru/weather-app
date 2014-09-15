@@ -8,5 +8,26 @@
         <item>Today</item>
         <item>Tomorrow</item>
     </string-array>
+    
+    <string name="country_name">Country Name</string>
+    <string name="temperature">Temperature</string>
+    <string name="description">Description</string>
+    <string name="humidity">Humidity</string>
+    <string name="pressure">Pressure</string>
+    <string name="copyright">OpenWeatherMap.com</string>
+    
+    <!-- API key from OpenWeatherMap.com -->
+    <string name="open_weather_maps_api_key">4f787a099a90e6f7647f956036960520</string>
+     
+    <!-- Weather font icons -->
+    <string name="weather_sunny">&#xf00d;</string>
+    <string name="weather_clear_night">&#xf02e;</string>
+     
+    <string name="weather_foggy">&#xf014;</string>
+    <string name="weather_cloudy">&#xf013;</string>
+    <string name="weather_rainy">&#xf019;</string>
+    <string name="weather_snowy">&#xf01b;</string>
+    <string name="weather_thunder">&#xf01e;</string>
+    <string name="weather_drizzle">&#xf01c;</string>
 
 </resources>

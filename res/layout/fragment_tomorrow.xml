@@ -21,8 +21,8 @@
         android:layout_marginTop="40dp"
         android:layout_below="@+id/tomorrow_name"
         android:layout_centerHorizontal="true"
-        android:text="@string/weather_sunny"
-        android:textSize="32sp"
+        android:text="@string/weather_clear_night"
+        android:textSize="72sp"
         android:textStyle="bold"/>
     
     <TextView android:id="@+id/tomorrow_temperature"

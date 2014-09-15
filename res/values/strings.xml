@@ -2,7 +2,11 @@
 <resources>
 
     <string name="app_name">WeatherApp</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    
+    <string-array name="weather_tab_names">
+        <item>Today</item>
+        <item>Tomorrow</item>
+    </string-array>
 
 </resources>

@@ -5,11 +5,67 @@
     android:orientation="vertical"
     android:background="#ffffff" >
      
-    <TextView android:layout_width="fill_parent"
+    <TextView android:id="@+id/tomorrow_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Tomorrow Fragment"
-        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/country_name"
+        android:textSize="22sp"
         android:layout_centerInParent="true"/>
+    
+    <TextView android:id="@+id/tomorrow_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/tomorrow_name"
+        android:layout_centerHorizontal="true"
+        android:text="@string/weather_clear_night"
+        android:textSize="72sp"
+        android:textStyle="bold"/>
+    
+    <TextView android:id="@+id/tomorrow_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tomorrow_icon"
+        android:layout_centerHorizontal="true"
+        android:text="@string/temperature"
+        android:textSize="32sp"
+        android:textStyle="bold"/>
+    
+    <TextView android:id="@+id/tomorrow_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tomorrow_humidity"
+        android:layout_centerHorizontal="true"
+        android:text="@string/description"
+        android:textSize="22sp"/>
+    
+    <TextView android:id="@+id/tomorrow_humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tomorrow_pressure"
+        android:layout_centerHorizontal="true"
+        android:text="@string/humidity"
+        android:textSize="20sp"/>
+    
+    <TextView android:id="@+id/tomorrow_pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tomorrow_copyright"
+        android:layout_centerHorizontal="true"
+        android:text="@string/pressure"
+        android:textSize="20sp"/>
+    
+    <TextView android:id="@+id/tomorrow_copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_marginTop="20dp"
+		android:layout_marginBottom="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/copyright"
+        android:textSize="12sp"/>
      
 </RelativeLayout>

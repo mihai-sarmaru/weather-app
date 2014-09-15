@@ -18,13 +18,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private TabsPagerAdapter mAdapter;
 	private ViewPager viewPager;
 	
-	// Tab titles
-	private String[] tabs = {"Today", "Tomorrow"}; // TODO: move to strings.xml
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		// Tab titles
+		final String[] tabNames = getResources().getStringArray(R.array.weather_tab_names);
 		
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
@@ -37,7 +37,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
 		// Add tabs to ActionBar
-		for (String tabName : tabs) {
+		for (String tabName : tabNames) {
 			actionBar.addTab(actionBar.newTab().setText(tabName).setTabListener(this));
 		}
 		

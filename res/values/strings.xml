@@ -18,6 +18,7 @@
     
     <!-- API key from OpenWeatherMap.com -->
     <string name="open_weather_maps_api_key">4f787a099a90e6f7647f956036960520</string>
+    <string name="open_weather_maps_header">x-api-key</string>
      
     <!-- Weather font icons -->
     <string name="weather_sunny">&#xf00d;</string>

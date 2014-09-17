@@ -36,40 +36,8 @@ public class JsonParser {
 			String location = json.getString(TAG_NAME) + ", " + json.getJSONObject(TAG_SYS).getString(TAG_COUNTRY);
 			weather.setLocation(location);
 
-			// Icon logic
-			int iconCode = json.getJSONArray(TAG_WEATHER).getJSONObject(0).getInt(TAG_ICON);
-			long sunrise = json.getJSONObject(TAG_SYS).getLong(TAG_SUNRISE) * 1000;
-			long sunset = json.getJSONObject(TAG_SYS).getLong(TAG_SUNSET) * 1000;
-			long currrentTime = new Date().getTime();
-
-			if (iconCode == 800) {
-				if (currrentTime >= sunrise && currrentTime < sunset) {
-					weather.setIcon(WeatherObject.WEATHER_SUNNY);
-				} else {
-					weather.setIcon(WeatherObject.WEATHER_CLEAR_NIGHT);
-				}
-			}
-
-			switch (iconCode / 100) {
-			case 2:
-				weather.setIcon(WeatherObject.WEATHER_THUNDER);
-				break;
-			case 3:
-				weather.setIcon(WeatherObject.WEATHER_DRIZZLE);
-				break;
-			case 5:
-				weather.setIcon(WeatherObject.WEATHER_RAINY);
-				break;
-			case 6:
-				weather.setIcon(WeatherObject.WEATHER_SNOWY);
-				break;
-			case 7:
-				weather.setIcon(WeatherObject.WEATHER_FOGGY);
-				break;
-			case 8:
-				weather.setIcon(WeatherObject.WEATHER_CLOUDY);
-				break;
-			}
+			// Icon
+			weather.setIcon(setWeatherIcon(json));
 
 			// Details
 			JSONObject main = json.getJSONObject(TAG_MAIN);
@@ -86,6 +54,55 @@ public class JsonParser {
 
 		// Return weather object
 		return weather;
+	}
+	
+	// Icon setup based on JSON icon code
+	private static int setWeatherIcon(JSONObject json) {
+		// Default weather icon
+		int weatherIcon = WeatherObject.WEATHER_SUNNY;
+		
+		try {	
+			// Icon logic
+			int iconCode = json.getJSONArray(TAG_WEATHER).getJSONObject(0).getInt(TAG_ICON);
+			long sunrise = json.getJSONObject(TAG_SYS).getLong(TAG_SUNRISE) * 1000;
+			long sunset = json.getJSONObject(TAG_SYS).getLong(TAG_SUNSET) * 1000;
+			long currrentTime = new Date().getTime();
 
+			if (iconCode == 800) {
+				if (currrentTime >= sunrise && currrentTime < sunset) {
+					weatherIcon = WeatherObject.WEATHER_SUNNY;
+				} else {
+					weatherIcon = WeatherObject.WEATHER_CLEAR_NIGHT;
+				}
+			}
+
+			switch (iconCode / 100) {
+			case 2:
+				weatherIcon = WeatherObject.WEATHER_THUNDER;
+				break;
+			case 3:
+				weatherIcon = WeatherObject.WEATHER_DRIZZLE;
+				break;
+			case 5:
+				weatherIcon = WeatherObject.WEATHER_RAINY;
+				break;
+			case 6:
+				weatherIcon = WeatherObject.WEATHER_SNOWY;
+				break;
+			case 7:
+				weatherIcon = WeatherObject.WEATHER_FOGGY;
+				break;
+			case 8:
+				weatherIcon = WeatherObject.WEATHER_CLOUDY;
+				break;
+			}
+		} catch (Exception e) {
+			// Log JSON parsing problems and print call stack
+			Log.d("JSON", "There were problems in icon logic while parsing JSON");
+			e.printStackTrace();
+		}
+		
+		// Return weather icon
+		return weatherIcon;
 	}
 }

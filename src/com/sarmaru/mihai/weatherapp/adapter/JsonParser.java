@@ -27,7 +27,7 @@ public class JsonParser {
 	private static WeatherObject weather = null;
 
 	// Parse weather JSON and return a weather object
-	public static WeatherObject parseWeatherJson(String jsonString) {
+	public static WeatherObject parseWeatherJson(String jsonString, int unit, int type) {
 		try {
 			weather = new WeatherObject();
 			JSONObject json = new JSONObject(jsonString);
@@ -45,6 +45,10 @@ public class JsonParser {
 			weather.setDescription(json.getJSONArray(TAG_WEATHER).getJSONObject(0).getString(TAG_DESCRIPTION));
 			weather.setHumidity(main.getString(TAG_HUMIDITY));
 			weather.setPressure(main.getString(TAG_PRESSURE));
+			
+			// Set unit and type
+			weather.setUnit(unit);
+			weather.setType(type);
 
 		} catch (Exception e) {
 			// Log JSON parsing problems and print call stack

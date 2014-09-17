@@ -10,6 +10,7 @@ public class WeatherObject {
 	private String _description;
 	private String _humidity;
 	private String _pressure;
+	private int _unit;
 	private int _type; // today or tomorrow
 	
 	// Public TYPE members
@@ -31,7 +32,7 @@ public class WeatherObject {
 	
 	// Full constructor
 	public WeatherObject (int id, String location, int icon, String temperature,
-			String description, String humidity, String pressure, int type) {
+			String description, String humidity, String pressure, int unit, int type) {
 		this._id = id;
 		this._location = location;
 		this._icon = icon;
@@ -39,18 +40,20 @@ public class WeatherObject {
 		this._description = description;
 		this._humidity = humidity;
 		this._pressure = pressure;
+		this._unit = unit;
 		this._type = type;
 	}
 	
 	// Constructor (for inserting objects)
 	public WeatherObject (String location, int icon, String temperature,
-			String description, String humidity, String pressure, int type) {
+			String description, String humidity, String pressure, int unit, int type) {
 		this._location = location;
 		this._icon = icon;
 		this._temperature = temperature;
 		this._description = description;
 		this._humidity = humidity;
 		this._pressure = pressure;
+		this._unit = unit;
 		this._type = type;
 	}
 	
@@ -102,6 +105,13 @@ public class WeatherObject {
 	}
 	public void setPressure(String pressure) {
 		this._pressure = pressure;
+	}
+	
+	public int getUnit() {
+		return this._unit;
+	}
+	public void setUnit(int unit) {
+		this._unit = unit;
 	}
 	
 	public int getType() {

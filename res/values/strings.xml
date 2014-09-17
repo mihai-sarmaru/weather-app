@@ -3,6 +3,7 @@
 
     <string name="app_name">WeatherApp</string>
     <string name="action_settings">Settings</string>
+    <string name="progress_dialog_message">Getting weather...</string>
     
     <string-array name="weather_tab_names">
         <item>Today</item>

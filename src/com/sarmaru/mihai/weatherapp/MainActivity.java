@@ -1,10 +1,13 @@
 package com.sarmaru.mihai.weatherapp;
 
 import com.sarmaru.mihai.weatherapp.adapter.TabsPagerAdapter;
+import com.sarmaru.mihai.weatherapp.adapter.WeatherObject;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -17,6 +20,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private ActionBar actionBar;
 	private TabsPagerAdapter mAdapter;
 	private ViewPager viewPager;
+	
+	// Progress dialog used for async task
+	private ProgressDialog progressDialog = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -88,4 +94,39 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 	@Override
 	public void onTabReselected(Tab tab, FragmentTransaction ft) {	}
+	
+	// Subclass for processing JSON string in Async
+	private class processWeatherJsonAsync extends AsyncTask<Void, Void, Void> {
+		
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			
+			// Show a progress dialog
+			progressDialog = new ProgressDialog(MainActivity.this);
+			progressDialog.setMessage(getString(R.string.progress_dialog_message));
+			progressDialog.setCancelable(false);
+			progressDialog.show();
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			// TODO Implement background task
+			// String formatUrlString(String url, String city, int unit)
+			// String makeHttpCall(String url, String header, String apiKey)
+			// WeatherObject parseWeatherJson(String jsonString, int unit, int type)
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			
+			// TODO Method for setting weather object to layout views
+			
+			// Dismiss progress dialog
+			progressDialog.dismiss();
+		}
+		
+	}
 }

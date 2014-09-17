@@ -17,6 +17,11 @@ public class WeatherObject {
 	public static final int TODAY = 1;
 	public static final int TOMORROW = 2;
 	
+	// Weather units
+	public static final int DEFAULT = 0;
+	public static final int METRIC = 1;
+	public static final int IMPERIAL = 2;
+	
 	// Weather Icons
 	public static final int WEATHER_SUNNY = 1;
 	public static final int WEATHER_CLEAR_NIGHT = 2;

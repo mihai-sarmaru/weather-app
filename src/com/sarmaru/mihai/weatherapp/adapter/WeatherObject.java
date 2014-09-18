@@ -1,5 +1,7 @@
 package com.sarmaru.mihai.weatherapp.adapter;
 
+import java.text.DecimalFormat;
+
 public class WeatherObject {
 	
 	// Private variables
@@ -88,7 +90,8 @@ public class WeatherObject {
 		return this._temperature;
 	}
 	public void setTemperature (String temperature) {
-		this._temperature = temperature;
+		DecimalFormat df = new DecimalFormat("#.#");
+		this._temperature = df.format(Double.parseDouble(temperature)).toString();
 	}
 	
 	public String getDescription() {

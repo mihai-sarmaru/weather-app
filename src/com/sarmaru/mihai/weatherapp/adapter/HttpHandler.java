@@ -2,6 +2,7 @@ package com.sarmaru.mihai.weatherapp.adapter;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
@@ -16,7 +17,7 @@ public class HttpHandler {
 	// Constructor
 	public HttpHandler() {}
 	
-	// HTTP request via POST - returns string response
+	// HTTP request via GET - returns string response
 	public String makeHttpCall(String url, String header, String apiKey) {
 		try {
 			// Get a HTTP client
@@ -24,11 +25,11 @@ public class HttpHandler {
 			HttpEntity entity = null;
 			HttpResponse response = null;
 			
-			// Create and execute a new POST HTTP request
-			HttpPost post = new HttpPost(url);
+			// Create and execute a new GET HTTP request
+			HttpGet httpGet = new HttpGet(url);
 			// Add API Key in header
-			post.addHeader(header, apiKey);
-			response = client.execute(post);
+			httpGet.addHeader(header, apiKey);
+			response = client.execute(httpGet);
 			
 			// Get response from server
 			entity = response.getEntity();

@@ -23,7 +23,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private ActionBar actionBar;
 	private TabsPagerAdapter mAdapter;
 	private ViewPager viewPager;
-	
+
 	// Progress dialog used for async task
 	private ProgressDialog progressDialog = null;
 	
@@ -137,7 +137,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			
-			// TODO Method for setting weather object to layout views
+			// Display weather object in views
+			TodayFragment.displayTodayWeather(MainActivity.this, todayWeather);
 			
 			// Dismiss progress dialog
 			progressDialog.dismiss();

@@ -3,7 +3,7 @@
 
     <string name="app_name">WeatherApp</string>
     <string name="action_settings">Settings</string>
-    <string name="progress_dialog_message">Getting weather...</string>
+    <string name="progress_dialog_message">Getting weather..</string>
     
     <string-array name="weather_tab_names">
         <item>Today</item>
@@ -13,9 +13,12 @@
     <string name="country_name">Location</string>
     <string name="temperature">Temperature</string>
     <string name="description">Description</string>
-    <string name="humidity">Humidity</string>
-    <string name="pressure">Pressure</string>
+    <string name="humidity">Humidity:</string>
+    <string name="pressure">Pressure:</string>
     <string name="copyright">OpenWeatherMap.com</string>
+    
+    <string name="celsius">°C</string>
+    <string name="fahrenheit">°F</string>
     
     <!-- API from OpenWeatherMap.com -->
     <string name="open_weather_maps_api_key">4f787a099a90e6f7647f956036960520</string>

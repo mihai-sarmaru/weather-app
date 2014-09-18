@@ -78,28 +78,29 @@ public class JsonParser {
 				} else {
 					weatherIcon = WeatherObject.WEATHER_CLEAR_NIGHT;
 				}
+			} else {
+				switch (iconCode / 100) {
+				case 2:
+					weatherIcon = WeatherObject.WEATHER_THUNDER;
+					break;
+				case 3:
+					weatherIcon = WeatherObject.WEATHER_DRIZZLE;
+					break;
+				case 5:
+					weatherIcon = WeatherObject.WEATHER_RAINY;
+					break;
+				case 6:
+					weatherIcon = WeatherObject.WEATHER_SNOWY;
+					break;
+				case 7:
+					weatherIcon = WeatherObject.WEATHER_FOGGY;
+					break;
+				case 8:
+					weatherIcon = WeatherObject.WEATHER_CLOUDY;
+					break;
+				}
 			}
 
-			switch (iconCode / 100) {
-			case 2:
-				weatherIcon = WeatherObject.WEATHER_THUNDER;
-				break;
-			case 3:
-				weatherIcon = WeatherObject.WEATHER_DRIZZLE;
-				break;
-			case 5:
-				weatherIcon = WeatherObject.WEATHER_RAINY;
-				break;
-			case 6:
-				weatherIcon = WeatherObject.WEATHER_SNOWY;
-				break;
-			case 7:
-				weatherIcon = WeatherObject.WEATHER_FOGGY;
-				break;
-			case 8:
-				weatherIcon = WeatherObject.WEATHER_CLOUDY;
-				break;
-			}
 		} catch (Exception e) {
 			// Log JSON parsing problems and print call stack
 			Log.d("JSON", "There were problems in icon logic while parsing JSON");

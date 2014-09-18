@@ -1,6 +1,9 @@
 package com.sarmaru.mihai.weatherapp;
 
+import com.sarmaru.mihai.weatherapp.adapter.HttpHandler;
+import com.sarmaru.mihai.weatherapp.adapter.JsonParser;
 import com.sarmaru.mihai.weatherapp.adapter.TabsPagerAdapter;
+import com.sarmaru.mihai.weatherapp.adapter.Utils;
 import com.sarmaru.mihai.weatherapp.adapter.WeatherObject;
 
 import android.app.ActionBar;
@@ -23,6 +26,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	
 	// Progress dialog used for async task
 	private ProgressDialog progressDialog = null;
+	
+	// Weather objects
+	private WeatherObject todayWeather = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +68,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			@Override
 			public void onPageScrollStateChanged(int arg0) { }
 		});
+		
+		// Execute background task to get and parse weather
+		new ProcessWeatherJsonAsync().execute();
 	}
 
 	@Override
@@ -96,7 +105,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	public void onTabReselected(Tab tab, FragmentTransaction ft) {	}
 	
 	// Subclass for processing JSON string in Async
-	private class processWeatherJsonAsync extends AsyncTask<Void, Void, Void> {
+	private class ProcessWeatherJsonAsync extends AsyncTask<Void, Void, Void> {
 		
 		@Override
 		protected void onPreExecute() {
@@ -111,10 +120,16 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 		@Override
 		protected Void doInBackground(Void... params) {
-			// TODO Implement background task
-			// String formatUrlString(String url, String city, int unit)
-			// String makeHttpCall(String url, String header, String apiKey)
-			// WeatherObject parseWeatherJson(String jsonString, int unit, int type)
+			
+			// TODO SHARED PREFERENCES for LOCATION and UNITS
+			
+			// Format URL string
+			HttpHandler handler = new HttpHandler();
+			String formatUrl = Utils.formatUrlString(getString(R.string.open_weather_maps_url), "Galati", WeatherObject.DEFAULT);
+			// Make HTTP call and get a JSON response
+			String jsonString = handler.makeHttpCall(formatUrl, getString(R.string.open_weather_maps_header), getString(R.string.open_weather_maps_api_key));
+			// Parse JSON to a weather object
+			todayWeather = JsonParser.parseWeatherJson(jsonString, WeatherObject.DEFAULT, WeatherObject.TODAY);
 			return null;
 		}
 		

@@ -1,5 +1,8 @@
 package com.sarmaru.mihai.weatherapp;
 
+import com.sarmaru.mihai.weatherapp.adapter.WeatherObject;
+
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class TodayFragment extends Fragment {
+	
+	// Today Views
+	private static TextView todayName, todayIcon, todayTemperature, todayDescription, todayHumidity, todayPressure;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -17,12 +23,46 @@ public class TodayFragment extends Fragment {
 		// Inflate fragment XML
 		View rootView = inflater.inflate(R.layout.fragment_today, container, false);
 		
-		// Set weatherFont to icon TextView
-		TextView icon = (TextView) rootView.findViewById(R.id.today_icon);
-		Typeface weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "weathericons-font.ttf");
-		icon.setTypeface(weatherFont);
+		// Initialize text views
+		initializeViews(rootView);
 		
 		// Return view
 		return rootView;
 	}
+	
+	// Initialize text views
+	private void initializeViews(View rootView) {
+		todayName = (TextView) rootView.findViewById(R.id.today_name);
+		
+		// Set weatherFont to icon TextView
+		todayIcon = (TextView) rootView.findViewById(R.id.today_icon);
+		Typeface weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "weathericons-font.ttf");
+		todayIcon.setTypeface(weatherFont);
+		
+		todayTemperature = (TextView) rootView.findViewById(R.id.today_temperature);
+		todayDescription = (TextView) rootView.findViewById(R.id.today_description);
+		todayHumidity = (TextView) rootView.findViewById(R.id.today_humidity);
+		todayPressure = (TextView) rootView.findViewById(R.id.today_pressure);
+	}
+	
+	// Display weather object to text views
+	public static void displayTodayWeather(Context context, WeatherObject weather) {
+		// Name and icon
+		todayName.setText(weather.getLocation());
+		todayIcon.setText(context.getString(weather.getIcon()));
+		
+		// Temperature units
+		if (weather.getUnit() == WeatherObject.METRIC || weather.getUnit() == WeatherObject.DEFAULT) {
+			todayTemperature.setText(weather.getTemperature() + " " + context.getString(R.string.celsius));
+		} else if (weather.getUnit() == WeatherObject.IMPERIAL) {
+			todayTemperature.setText(weather.getTemperature() + " " + context.getString(R.string.fahrenheit));
+		}
+		
+		// Details
+		todayDescription.setText(weather.getDescription());
+		todayHumidity.setText(context.getString(R.string.humidity) + " " + weather.getHumidity());
+		todayPressure.setText(context.getString(R.string.pressure) + " " + weather.getPressure());
+	}
 }
+
+

@@ -1,10 +1,16 @@
 package com.sarmaru.mihai.weatherapp;
 
+import com.sarmaru.mihai.weatherapp.adapter.HttpHandler;
+import com.sarmaru.mihai.weatherapp.adapter.JsonParser;
 import com.sarmaru.mihai.weatherapp.adapter.TabsPagerAdapter;
+import com.sarmaru.mihai.weatherapp.adapter.Utils;
+import com.sarmaru.mihai.weatherapp.adapter.WeatherObject;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -17,6 +23,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private ActionBar actionBar;
 	private TabsPagerAdapter mAdapter;
 	private ViewPager viewPager;
+
+	// Progress dialog used for async task
+	private ProgressDialog progressDialog = null;
+	
+	// Weather objects
+	private WeatherObject todayWeather = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +68,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			@Override
 			public void onPageScrollStateChanged(int arg0) { }
 		});
+		
+		// Execute background task to get and parse weather
+		new ProcessWeatherJsonAsync().execute();
 	}
 
 	@Override
@@ -88,4 +103,46 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 	@Override
 	public void onTabReselected(Tab tab, FragmentTransaction ft) {	}
+	
+	// Subclass for processing JSON string in Async
+	private class ProcessWeatherJsonAsync extends AsyncTask<Void, Void, Void> {
+		
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			
+			// Show a progress dialog
+			progressDialog = new ProgressDialog(MainActivity.this);
+			progressDialog.setMessage(getString(R.string.progress_dialog_message));
+			progressDialog.setCancelable(false);
+			progressDialog.show();
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			
+			// TODO SHARED PREFERENCES for LOCATION and UNITS
+			
+			// Format URL string
+			HttpHandler handler = new HttpHandler();
+			String formatUrl = Utils.formatUrlString(getString(R.string.open_weather_maps_url), "Galati", WeatherObject.DEFAULT);
+			// Make HTTP call and get a JSON response
+			String jsonString = handler.makeHttpCall(formatUrl, getString(R.string.open_weather_maps_header), getString(R.string.open_weather_maps_api_key));
+			// Parse JSON to a weather object
+			todayWeather = JsonParser.parseWeatherJson(jsonString, WeatherObject.DEFAULT, WeatherObject.TODAY);
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			
+			// Display weather object in views
+			TodayFragment.displayTodayWeather(MainActivity.this, todayWeather);
+			
+			// Dismiss progress dialog
+			progressDialog.dismiss();
+		}
+		
+	}
 }

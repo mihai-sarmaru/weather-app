@@ -1,5 +1,8 @@
 package com.sarmaru.mihai.weatherapp.adapter;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+
 public class Utils {
 	
 	// Format URL string (metric default)
@@ -20,6 +23,12 @@ public class Utils {
 		
 		// Return formated URL
 		return formatUrl;
+	}
+	
+	// Check Internet connection
+	public static boolean isNetworkAvailable(Context context) {
+		// Return connectivity service active network info
+	    return ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() != null;
 	}
 
 }

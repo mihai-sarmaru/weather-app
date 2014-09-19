@@ -17,6 +17,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 	
@@ -69,8 +70,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			public void onPageScrollStateChanged(int arg0) { }
 		});
 		
-		// Execute background task to get and parse weather
-		new ProcessWeatherJsonAsync().execute();
+		// Check Internet connection
+		if (Utils.isNetworkAvailable(this)) {
+			// Execute background task to get and parse weather
+			new ProcessWeatherJsonAsync().execute();
+		} else {
+			// TODO get info from database
+		}
+		
 	}
 
 	@Override
@@ -137,11 +144,17 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			
-			// Display weather object in views
-			TodayFragment.displayTodayWeather(MainActivity.this, todayWeather);
-			
-			// Dismiss progress dialog
-			progressDialog.dismiss();
+			if (todayWeather != null) {
+				// Display weather object in views
+				TodayFragment.displayTodayWeather(MainActivity.this, todayWeather);
+				
+				// Dismiss progress dialog
+				progressDialog.dismiss();
+			} else {
+				// Notify user that response was negative
+				Toast.makeText(MainActivity.this, R.string.api_error, Toast.LENGTH_LONG).show();
+			}
+
 		}
 		
 	}

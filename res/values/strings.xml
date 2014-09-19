@@ -21,6 +21,7 @@
     <string name="fahrenheit">°F</string>
     
     <string name="api_error">Could not get latest weather data</string>
+    <string name="no_internet_error">No Internet connection</string>
     
     <!-- API from OpenWeatherMap.com -->
     <string name="open_weather_maps_api_key">4f787a099a90e6f7647f956036960520</string>

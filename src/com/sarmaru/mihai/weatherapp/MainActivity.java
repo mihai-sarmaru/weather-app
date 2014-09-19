@@ -75,6 +75,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			// Execute background task to get and parse weather
 			new ProcessWeatherJsonAsync().execute();
 		} else {
+			// Notify user for no Internet connection
+			Toast.makeText(MainActivity.this, R.string.no_internet_error, Toast.LENGTH_LONG).show();
+			
 			// TODO get info from database
 		}
 		

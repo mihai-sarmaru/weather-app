@@ -3,9 +3,15 @@
     tools:context="com.sarmaru.mihai.weatherapp.MainActivity" >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/menu_location"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="@string/action_settings"/>
+        android:title="@string/menu_location"/>
+    
+    <item
+        android:id="@+id/menu_units"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/menu_units"/>
 
 </menu>

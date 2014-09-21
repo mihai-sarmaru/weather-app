@@ -37,7 +37,6 @@ public class HttpHandler {
 		} catch (Exception e) {
 			// Log exception and print stack trace
 			Log.d("HTTP", "HTTP Handler failed to make call / receive response");
-			e.printStackTrace();
 		}
 		
 		// Return response string

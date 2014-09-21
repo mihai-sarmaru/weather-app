@@ -17,12 +17,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 	
 	private ActionBar actionBar;
 	private TabsPagerAdapter mAdapter;
 	private ViewPager viewPager;
+	private WeatherPreferences weatherPrefs;
 
 	// Progress dialog used for async task
 	private ProgressDialog progressDialog = null;
@@ -34,6 +36,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		// Initialize weather preferences
+		weatherPrefs = new WeatherPreferences(this);
 		
 		// Tab titles
 		final String[] tabNames = getResources().getStringArray(R.array.weather_tab_names);
@@ -69,8 +74,21 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			public void onPageScrollStateChanged(int arg0) { }
 		});
 		
-		// Execute background task to get and parse weather
-		new ProcessWeatherJsonAsync().execute();
+		// Execute refresh weather method
+		refreshWeather();
+	}
+	
+	public void refreshWeather() {
+		// Check Internet connection
+		if (Utils.isNetworkAvailable(this)) {
+			// Execute background task to get and parse weather
+			new ProcessWeatherJsonAsync().execute();
+		} else {
+			// Notify user for no Internet connection
+			Toast.makeText(MainActivity.this, R.string.no_internet_error, Toast.LENGTH_LONG).show();
+			
+			// TODO get info from database
+		}
 	}
 
 	@Override
@@ -82,13 +100,17 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
+		// Switch menu items based on ID
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		switch (id) {
+		case R.id.menu_location:
+			WeatherPreferences.changeLocation(MainActivity.this);
+			break;
+		case R.id.menu_units:
+			WeatherPreferences.changeUnits(MainActivity.this);
+			break;
 		}
+		// Return item
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -121,15 +143,17 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		@Override
 		protected Void doInBackground(Void... params) {
 			
-			// TODO SHARED PREFERENCES for LOCATION and UNITS
+			// Get location and units shared preferences
+			String userLocation = weatherPrefs.getUserLocation();
+			int userUnits = weatherPrefs.getUserUnits();
 			
 			// Format URL string
 			HttpHandler handler = new HttpHandler();
-			String formatUrl = Utils.formatUrlString(getString(R.string.open_weather_maps_url), "Galati", WeatherObject.DEFAULT);
+			String formatUrl = Utils.formatUrlString(getString(R.string.open_weather_maps_url), userLocation, userUnits);
 			// Make HTTP call and get a JSON response
 			String jsonString = handler.makeHttpCall(formatUrl, getString(R.string.open_weather_maps_header), getString(R.string.open_weather_maps_api_key));
 			// Parse JSON to a weather object
-			todayWeather = JsonParser.parseWeatherJson(jsonString, WeatherObject.DEFAULT, WeatherObject.TODAY);
+			todayWeather = JsonParser.parseWeatherJson(jsonString, userUnits, WeatherObject.TODAY);
 			return null;
 		}
 		
@@ -137,11 +161,17 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			
-			// Display weather object in views
-			TodayFragment.displayTodayWeather(MainActivity.this, todayWeather);
+			if (todayWeather != null) {
+				// Display weather object in views
+				TodayFragment.displayTodayWeather(MainActivity.this, todayWeather);
+			} else {
+				// Notify user that response was negative
+				Toast.makeText(MainActivity.this, R.string.api_error, Toast.LENGTH_LONG).show();
+			}
 			
 			// Dismiss progress dialog
 			progressDialog.dismiss();
+
 		}
 		
 	}

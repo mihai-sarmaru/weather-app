@@ -103,6 +103,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		// Switch menu items based on ID
 		int id = item.getItemId();
 		switch (id) {
+		case R.id.menu_refresh:
+			refreshWeather();
+			break;
 		case R.id.menu_location:
 			WeatherPreferences.changeLocation(MainActivity.this);
 			break;

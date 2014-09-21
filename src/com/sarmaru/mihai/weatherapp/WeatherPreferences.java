@@ -48,7 +48,7 @@ public class WeatherPreferences {
 	}
 	
 	// Location preference dialog
-	public static void changeLocation(Activity activity) {
+	public static void changeLocation(final Activity activity) {
 		final WeatherPreferences wp = new WeatherPreferences(activity);
 		
 		// Create an Alert Dialog Builder and set title
@@ -68,6 +68,8 @@ public class WeatherPreferences {
 			public void onClick(DialogInterface dialog, int which) {
 				// Change location shared preferences
 				wp.setUserLocation(inputField.getText().toString());
+				// Recreate cactivity after changes
+				activity.recreate();
 			}
 		});
 		
@@ -86,7 +88,7 @@ public class WeatherPreferences {
 	}
 	
 	// Units preference dialog
-	public static void changeUnits(Activity activity) {
+	public static void changeUnits(final Activity activity) {
 		final WeatherPreferences wp = new WeatherPreferences(activity);
 		
 		// Create an Alert Dialog Builder and set title
@@ -106,7 +108,9 @@ public class WeatherPreferences {
 					wp.setUserUnits(WeatherObject.IMPERIAL);
 				} else {
 					wp.setUserUnits(WeatherObject.DEFAULT);
-				}	
+				}
+				// Recreate parent activity after changes
+				activity.recreate();
 			}
 		});
 		

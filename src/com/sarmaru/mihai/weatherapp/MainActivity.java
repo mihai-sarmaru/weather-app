@@ -164,13 +164,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			if (todayWeather != null) {
 				// Display weather object in views
 				TodayFragment.displayTodayWeather(MainActivity.this, todayWeather);
-				
-				// Dismiss progress dialog
-				progressDialog.dismiss();
 			} else {
 				// Notify user that response was negative
 				Toast.makeText(MainActivity.this, R.string.api_error, Toast.LENGTH_LONG).show();
 			}
+			
+			// Dismiss progress dialog
+			progressDialog.dismiss();
 
 		}
 		

@@ -49,15 +49,16 @@ public class JsonParser {
 			// Set unit and type
 			weather.setUnit(unit);
 			weather.setType(type);
+			
+			// Return weather object
+			return weather;
 
 		} catch (Exception e) {
 			// Log JSON parsing problems and print call stack
 			Log.d("JSON", "There were problems parsing JSON");
-			e.printStackTrace();
+			return null;
 		}
 
-		// Return weather object
-		return weather;
 	}
 	
 	// Icon setup based on JSON icon code

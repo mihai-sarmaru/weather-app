@@ -3,6 +3,13 @@
     tools:context="com.sarmaru.mihai.weatherapp.MainActivity" >
 
     <item
+        android:id="@+id/menu_refresh"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_rotate"
+        android:title="@string/menu_refresh"/>
+    
+    <item
         android:id="@+id/menu_location"
         android:orderInCategory="100"
         android:showAsAction="never"

@@ -22,6 +22,8 @@
     <string name="country_name">Location</string>
     <string name="temperature">Temperature</string>
     <string name="description">Description</string>
+    <string name="precipitation">Precipitaion:</string>
+    <string name="wind">Wind:</string>
     <string name="humidity">Humidity:</string>
     <string name="pressure">Pressure:</string>
     <string name="copyright">OpenWeatherMap.com</string>

@@ -66,6 +66,6 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:text="@string/copyright"
-        android:textSize="12sp"/>
+        android:textSize="10sp"/>
      
 </RelativeLayout>

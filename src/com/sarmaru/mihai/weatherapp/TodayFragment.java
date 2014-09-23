@@ -15,7 +15,8 @@ import android.widget.TextView;
 public class TodayFragment extends Fragment {
 	
 	// Today Views
-	private static TextView todayName, todayIcon, todayTemperature, todayDescription, todayHumidity, todayPressure;
+	private static TextView todayName, todayIcon, todayTemperature, todayDescription, todayPrecipitation, todayWind, todayHumidity, todayPressure;
+	private static TextView todayPrecipitationIcon, todayWindIcon, todayHumidityIcon, todayPressureIcon;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -39,8 +40,20 @@ public class TodayFragment extends Fragment {
 		Typeface weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "weathericons-font.ttf");
 		todayIcon.setTypeface(weatherFont);
 		
+		// Set details Icons
+		todayPrecipitationIcon = (TextView) rootView.findViewById(R.id.today_precipitation_icon);
+		todayWindIcon = (TextView) rootView.findViewById(R.id.today_wind_icon);
+		todayHumidityIcon = (TextView) rootView.findViewById(R.id.today_humidity_icon);
+		todayPressureIcon = (TextView) rootView.findViewById(R.id.today_pressure_icon);
+		todayPrecipitationIcon.setTypeface(weatherFont);
+		todayWindIcon.setTypeface(weatherFont);
+		todayHumidityIcon.setTypeface(weatherFont);
+		todayPressureIcon.setTypeface(weatherFont);
+		
 		todayTemperature = (TextView) rootView.findViewById(R.id.today_temperature);
 		todayDescription = (TextView) rootView.findViewById(R.id.today_description);
+		todayPrecipitation = (TextView) rootView.findViewById(R.id.today_precipitation);
+		todayWind = (TextView) rootView.findViewById(R.id.today_wind);
 		todayHumidity = (TextView) rootView.findViewById(R.id.today_humidity);
 		todayPressure = (TextView) rootView.findViewById(R.id.today_pressure);
 	}
@@ -60,8 +73,14 @@ public class TodayFragment extends Fragment {
 		
 		// Details
 		todayDescription.setText(weather.getDescription());
-		todayHumidity.setText(context.getString(R.string.humidity) + " " + weather.getHumidity());
-		todayPressure.setText(context.getString(R.string.pressure) + " " + weather.getPressure());
+		if (weather.getPrecipitation() == "-") {
+			todayPrecipitation.setText(weather.getPrecipitation());
+		} else {
+			todayPrecipitation.setText(weather.getPrecipitation() + " " + context.getString(R.string.millimeter));
+		}
+		todayWind.setText(weather.getWind() + " " + context.getString(R.string.speed));
+		todayHumidity.setText(weather.getHumidity() + " " + context.getString(R.string.percent));
+		todayPressure.setText(weather.getPressure() + " " + context.getString(R.string.mercury));
 	}
 }
 

@@ -14,15 +14,15 @@
         android:text="@string/country_name"
         android:textSize="22sp"
         android:layout_centerInParent="true"/>
-    
+
     <TextView android:id="@+id/today_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/today_name"
         android:layout_centerHorizontal="true"
         android:text="@string/weather_sunny"
-        android:textSize="72sp"
+        android:textSize="90sp"
         android:textStyle="bold"/>
     
     <TextView android:id="@+id/today_temperature"
@@ -33,31 +33,127 @@
         android:text="@string/temperature"
         android:textSize="32sp"
         android:textStyle="bold"/>
-    
+         
     <TextView android:id="@+id/today_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/today_humidity"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/today_lienar_layout"
         android:layout_centerHorizontal="true"
         android:text="@string/description"
         android:textSize="22sp"/>
     
-    <TextView android:id="@+id/today_humidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/today_pressure"
-        android:layout_centerHorizontal="true"
-        android:text="@string/humidity"
-        android:textSize="20sp"/>
-    
-    <TextView android:id="@+id/today_pressure"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/today_lienar_layout"
+        android:baselineAligned="false"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/today_copyright"
         android:layout_centerHorizontal="true"
-        android:text="@string/pressure"
-        android:textSize="20sp"/>
+        android:orientation="horizontal" >
+        
+        <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginRight="10dp"
+	        android:layout_weight="1"
+	        android:orientation="vertical" >
+	        
+            <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal" >
+		        
+                <TextView android:id="@+id/today_precipitation_icon"
+			        android:layout_width="30dp"
+			        android:layout_height="wrap_content"
+			        android:layout_marginRight="5dp"
+			        android:text="@string/precipitation"
+			        android:textSize="20sp"
+			        android:textStyle="bold" />
+		        
+	            <TextView android:id="@+id/today_precipitation"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="14sp"/>
+	            
+            </LinearLayout>
+            
+            <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal" >
+	            
+                <TextView android:id="@+id/today_wind_icon"
+			        android:layout_width="30dp"
+			        android:layout_height="wrap_content"
+			        android:layout_marginRight="5dp"
+			        android:text="@string/wind"
+			        android:textSize="20sp"
+			        android:textStyle="bold"/>
+			    
+			    <TextView android:id="@+id/today_wind"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="14sp"/>
+			    
+		    </LinearLayout>
+		    
+	    </LinearLayout>
+	    
+        <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginRight="20dp"
+	        android:layout_weight="1"
+	        android:orientation="vertical" >
+            
+            <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal" >
+			    
+                <TextView android:id="@+id/today_humidity_icon"
+			        android:layout_width="30dp"
+			        android:layout_height="wrap_content"
+			        android:layout_marginRight="5dp"
+			        android:text="@string/humidity"
+			        android:textSize="20sp"
+			        android:textStyle="bold"/>
+	        
+	            <TextView android:id="@+id/today_humidity"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="14sp"/>
+	            
+            </LinearLayout>
+            
+            <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal" >
+	            
+                <TextView android:id="@+id/today_pressure_icon"
+			        android:layout_width="30dp"
+			        android:layout_height="wrap_content"
+			        android:layout_marginRight="5dp"
+			        android:text="@string/pressure"
+			        android:textSize="20sp"
+			        android:textStyle="bold"/>
+			    
+			    <TextView android:id="@+id/today_pressure"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="14sp"/>
+			    
+		    </LinearLayout>
+		    
+	    </LinearLayout>
     
+    </LinearLayout>
+
     <TextView android:id="@+id/today_copyright"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,6 +162,6 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:text="@string/copyright"
-        android:textSize="12sp"/>
+        android:textSize="10sp"/>
      
 </RelativeLayout>

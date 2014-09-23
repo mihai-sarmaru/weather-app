@@ -68,7 +68,7 @@ public class WeatherPreferences {
 			public void onClick(DialogInterface dialog, int which) {
 				// Change location shared preferences
 				wp.setUserLocation(inputField.getText().toString());
-				// Recreate cactivity after changes
+				// Recreate Activity after changes
 				activity.recreate();
 			}
 		});

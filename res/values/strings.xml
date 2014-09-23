@@ -22,14 +22,17 @@
     <string name="country_name">Location</string>
     <string name="temperature">Temperature</string>
     <string name="description">Description</string>
-    <string name="precipitation">Precipitaion:</string>
-    <string name="wind">Wind:</string>
-    <string name="humidity">Humidity:</string>
-    <string name="pressure">Pressure:</string>
+    <string name="precipitation">&#xf04e;</string>
+    <string name="wind">&#xf050;</string>
+    <string name="humidity">&#xf021;</string>
+    <string name="pressure">&#xf040;</string>
     <string name="copyright">OpenWeatherMap.com</string>
     
     <string name="celsius">°C</string>
     <string name="fahrenheit">°F</string>
+    <string name="mercury">mmHG</string>
+    <string name="percent">%</string>
+    <string name="speed">km/h</string>
     
     <string name="api_error">Could not get latest weather data</string>
     <string name="no_internet_error">No Internet connection</string>

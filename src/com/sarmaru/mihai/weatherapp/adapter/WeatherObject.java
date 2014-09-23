@@ -114,7 +114,8 @@ public class WeatherObject {
 		return this._pressure;
 	}
 	public void setPressure(String pressure) {
-		this._pressure = pressure;
+		DecimalFormat df = new DecimalFormat("#");
+		this._pressure = df.format(Double.parseDouble(pressure)).toString();
 	}
 	
 	public int getUnit() {

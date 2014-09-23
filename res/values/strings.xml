@@ -33,6 +33,7 @@
     <string name="mercury">mmHG</string>
     <string name="percent">%</string>
     <string name="speed">km/h</string>
+    <string name="millimeter">mm</string>
     
     <string name="api_error">Could not get latest weather data</string>
     <string name="no_internet_error">No Internet connection</string>

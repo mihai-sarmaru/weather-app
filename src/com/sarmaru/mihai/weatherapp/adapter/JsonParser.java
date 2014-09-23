@@ -19,6 +19,12 @@ public class JsonParser {
 	private static final String TAG_TEMPERATURE = "temp";
 	private static final String TAG_HUMIDITY = "humidity";
 	private static final String TAG_PRESSURE = "pressure";
+	
+	private static final String TAG_PRECIPITATION = "rain";
+	private static final String TAG_PRECIPITATION_VALUE = "3h";
+	
+	private static final String TAG_WIND = "wind";
+	private static final String TAG_WIND_SPEED = "speed";
 
 	private static final String TAG_WEATHER = "weather";
 	private static final String TAG_DESCRIPTION = "description";
@@ -43,6 +49,9 @@ public class JsonParser {
 			JSONObject main = json.getJSONObject(TAG_MAIN);
 			weather.setTemperature(main.getString(TAG_TEMPERATURE));
 			weather.setDescription(json.getJSONArray(TAG_WEATHER).getJSONObject(0).getString(TAG_DESCRIPTION));
+			weather.setPrecipitation(getJsonPrecipitation(json));
+			weather.setWind(json.getJSONObject(TAG_WIND).getString(TAG_WIND_SPEED));
+			
 			weather.setHumidity(main.getString(TAG_HUMIDITY));
 			weather.setPressure(main.getString(TAG_PRESSURE));
 			
@@ -59,6 +68,21 @@ public class JsonParser {
 			return null;
 		}
 
+	}
+	
+	// Precipitation handling method
+	private static String getJsonPrecipitation(JSONObject json) {
+		String precipitation = null;
+		
+		// Try if object exists or catch and set null
+		try {
+			precipitation = json.getJSONObject(TAG_PRECIPITATION).getString(TAG_PRECIPITATION_VALUE);
+		} catch (Exception e) {
+			precipitation = "-";
+		}
+		
+		// Return precipitation
+		return precipitation;
 	}
 	
 	// Icon setup based on JSON icon code

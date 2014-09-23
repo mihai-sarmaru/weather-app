@@ -73,6 +73,12 @@ public class TodayFragment extends Fragment {
 		
 		// Details
 		todayDescription.setText(weather.getDescription());
+		if (weather.getPrecipitation() == "-") {
+			todayPrecipitation.setText(weather.getPrecipitation());
+		} else {
+			todayPrecipitation.setText(weather.getPrecipitation() + " " + context.getString(R.string.millimeter));
+		}
+		todayWind.setText(weather.getWind() + " " + context.getString(R.string.speed));
 		todayHumidity.setText(weather.getHumidity() + " " + context.getString(R.string.percent));
 		todayPressure.setText(weather.getPressure() + " " + context.getString(R.string.mercury));
 	}

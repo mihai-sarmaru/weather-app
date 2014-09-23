@@ -12,6 +12,8 @@ public class WeatherObject {
 	private int _icon;
 	private String _temperature;
 	private String _description;
+	private String _precipitation;
+	private String _wind;
 	private String _humidity;
 	private String _pressure;
 	private int _unit;
@@ -41,12 +43,14 @@ public class WeatherObject {
 	
 	// Full constructor
 	public WeatherObject (int id, String location, int icon, String temperature,
-			String description, String humidity, String pressure, int unit, int type) {
+			String description, String precipitation, String wind, String humidity, String pressure, int unit, int type) {
 		this._id = id;
 		this._location = location;
 		this._icon = icon;
 		this._temperature = temperature;
 		this._description = description;
+		this._precipitation = precipitation;
+		this._wind = wind;
 		this._humidity = humidity;
 		this._pressure = pressure;
 		this._unit = unit;
@@ -55,11 +59,13 @@ public class WeatherObject {
 	
 	// Constructor (for inserting objects)
 	public WeatherObject (String location, int icon, String temperature,
-			String description, String humidity, String pressure, int unit, int type) {
+			String description, String precipitation, String wind, String humidity, String pressure, int unit, int type) {
 		this._location = location;
 		this._icon = icon;
 		this._temperature = temperature;
 		this._description = description;
+		this._precipitation = precipitation;
+		this._wind = wind;
 		this._humidity = humidity;
 		this._pressure = pressure;
 		this._unit = unit;
@@ -101,6 +107,21 @@ public class WeatherObject {
 	}
 	public void setDescription(String description) {
 		this._description = description;
+	}
+	
+	public String getPrecipitation() {
+		return this._precipitation;
+	}
+	public void setPrecipitation(String precipitation) {
+		this._precipitation = precipitation;
+	}
+	
+	public String getWind() {
+		return this._wind;
+	}
+	public void setWind(String wind) {
+		DecimalFormat df = new DecimalFormat("#.#");
+		this._wind = df.format(Double.parseDouble(wind)).toString();
 	}
 	
 	public String getHumidity() {

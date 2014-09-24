@@ -152,7 +152,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			
 			// Format URL string
 			HttpHandler handler = new HttpHandler();
-			String formatUrl = Utils.formatUrlString(getString(R.string.open_weather_maps_url), userLocation, userUnits);
+			String formatUrl = Utils.formatUrlString(getString(R.string.open_weather_maps_url), userLocation, userUnits, WeatherObject.TODAY);
 			// Make HTTP call and get a JSON response
 			String jsonString = handler.makeHttpCall(formatUrl, getString(R.string.open_weather_maps_header), getString(R.string.open_weather_maps_api_key));
 			// Parse JSON to a weather object

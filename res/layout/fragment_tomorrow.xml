@@ -37,7 +37,7 @@
     <TextView android:id="@+id/tomorrow_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:layout_above="@+id/tomorrow_lienar_layout"
         android:layout_centerHorizontal="true"
         android:text="@string/description"

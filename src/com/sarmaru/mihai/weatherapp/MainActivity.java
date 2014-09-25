@@ -1,5 +1,7 @@
 package com.sarmaru.mihai.weatherapp;
 
+import java.util.List;
+
 import com.sarmaru.mihai.weatherapp.adapter.HttpHandler;
 import com.sarmaru.mihai.weatherapp.adapter.JsonParser;
 import com.sarmaru.mihai.weatherapp.adapter.TabsPagerAdapter;
@@ -31,6 +33,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	
 	// Weather objects
 	private WeatherObject todayWeather = null;
+	private List<WeatherObject> tomorrowWeather = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -151,12 +154,20 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			int userUnits = weatherPrefs.getUserUnits();
 			
 			// Format URL string
-			HttpHandler handler = new HttpHandler();
-			String formatUrl = Utils.formatUrlString(getString(R.string.open_weather_maps_url), userLocation, userUnits, WeatherObject.TODAY);
+			HttpHandler todayHandler = new HttpHandler();
+			String todayFormatUrl = Utils.formatUrlString(getString(R.string.open_weather_maps_url), userLocation, userUnits, WeatherObject.TODAY);
 			// Make HTTP call and get a JSON response
-			String jsonString = handler.makeHttpCall(formatUrl, getString(R.string.open_weather_maps_header), getString(R.string.open_weather_maps_api_key));
+			String todayJsonString = todayHandler.makeHttpCall(todayFormatUrl, getString(R.string.open_weather_maps_header), getString(R.string.open_weather_maps_api_key));
 			// Parse JSON to a weather object
-			todayWeather = JsonParser.parseWeatherJson(jsonString, userUnits, WeatherObject.TODAY);
+			todayWeather = JsonParser.parseWeatherJson(todayJsonString, userUnits);
+			
+			// Format URL string
+			HttpHandler tomorrowHandler = new HttpHandler();
+			String tomorrowFormatUrl = Utils.formatUrlString(getString(R.string.open_weather_maps_forecast_url), userLocation, userUnits, WeatherObject.TOMORROW);
+			// Make HTTP call and get a JSON response
+			String tomorrowJsonString = tomorrowHandler.makeHttpCall(tomorrowFormatUrl, getString(R.string.open_weather_maps_header), getString(R.string.open_weather_maps_api_key));
+			// Parse JSON to a weather object
+			tomorrowWeather = JsonParser.parseForecastJson(tomorrowJsonString, userUnits);
 			return null;
 		}
 		
@@ -164,9 +175,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			
-			if (todayWeather != null) {
+			if (todayWeather != null && tomorrowWeather != null) {
 				// Display weather object in views
 				TodayFragment.displayTodayWeather(MainActivity.this, todayWeather);
+				
+				// TODO display forecast
+				
 			} else {
 				// Notify user that response was negative
 				Toast.makeText(MainActivity.this, R.string.api_error, Toast.LENGTH_LONG).show();

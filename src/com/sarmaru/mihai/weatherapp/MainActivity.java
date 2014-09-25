@@ -179,7 +179,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				// Display weather object in views
 				TodayFragment.displayTodayWeather(MainActivity.this, todayWeather);
 				
-				// TODO display forecast
+				// Display tomorrow forecast
+				TomorrowFragment.displayTomorrowWeather(MainActivity.this, tomorrowWeather);
 				
 			} else {
 				// Notify user that response was negative

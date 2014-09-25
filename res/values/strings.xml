@@ -26,6 +26,7 @@
     <string name="wind">&#xf050;</string>
     <string name="humidity">&#xf021;</string>
     <string name="pressure">&#xf040;</string>
+    <string name="days">Days</string>
     <string name="copyright">OpenWeatherMap.com</string>
     
     <string name="celsius">°C</string>
@@ -47,6 +48,7 @@
     <string name="open_weather_maps_api_key">4f787a099a90e6f7647f956036960520</string>
     <string name="open_weather_maps_header">x-api-key</string>
     <string name="open_weather_maps_url">http://api.openweathermap.org/data/2.5/weather?q=%s</string>
+    <string name="open_weather_maps_forecast_url">http://api.openweathermap.org/data/2.5/forecast/daily?q=%s</string>
      
     <!-- Weather font icons -->
     <string name="weather_sunny">&#xf00d;</string>

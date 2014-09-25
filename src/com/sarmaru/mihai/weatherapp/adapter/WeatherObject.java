@@ -120,8 +120,12 @@ public class WeatherObject {
 		return this._wind;
 	}
 	public void setWind(String wind) {
-		DecimalFormat df = new DecimalFormat("#.#");
-		this._wind = df.format(Double.parseDouble(wind)).toString();
+		if (wind == "-") {
+			this._wind = wind;
+		} else {
+			DecimalFormat df = new DecimalFormat("#.#");
+			this._wind = df.format(Double.parseDouble(wind)).toString();
+		}
 	}
 	
 	public String getHumidity() {
@@ -135,8 +139,12 @@ public class WeatherObject {
 		return this._pressure;
 	}
 	public void setPressure(String pressure) {
-		DecimalFormat df = new DecimalFormat("#");
-		this._pressure = df.format(Double.parseDouble(pressure)).toString();
+		if (pressure == "-") {
+			this._pressure = pressure;
+		} else {
+			DecimalFormat df = new DecimalFormat("#");
+			this._pressure = df.format(Double.parseDouble(pressure)).toString();
+		}
 	}
 	
 	public int getUnit() {

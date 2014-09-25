@@ -7,11 +7,11 @@ public class Utils {
 	
 	// Format URL string (metric default)
 	public static String formatUrlString(String url, String city) {
-		return formatUrlString(url, city, WeatherObject.DEFAULT);
+		return formatUrlString(url, city, WeatherObject.DEFAULT, WeatherObject.TODAY);
 	}
 	
 	// Format URL string (unit choice)
-	public static String formatUrlString(String url, String city, int unit) {
+	public static String formatUrlString(String url, String city, int unit, int type) {
 		String formatUrl = null;
 		
 		// Check for unit type
@@ -21,6 +21,10 @@ public class Utils {
 			formatUrl = String.format(url, city) + "&units=imperial";
 		}
 		
+		// Check for forecast type
+		if (type == WeatherObject.TOMORROW) {
+			formatUrl += "&cnt=6";
+		}
 		// Return formated URL
 		return formatUrl;
 	}

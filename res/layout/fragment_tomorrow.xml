@@ -63,6 +63,12 @@
 	        android:layout_weight="1"
 	        android:orientation="vertical" >
 	        
+            <TextView android:id="@+id/tomorrow_forecast1_day"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/days"
+		        android:textSize="12sp"/>
+	        
            <TextView android:id="@+id/tomorrow_forecast1_icon"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
@@ -87,6 +93,12 @@
 	        android:gravity="center_horizontal"
 	        android:layout_weight="1"
 	        android:orientation="vertical" >
+           
+            <TextView android:id="@+id/tomorrow_forecast2_day"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/days"
+		        android:textSize="12sp"/>
 	        
            <TextView android:id="@+id/tomorrow_forecast2_icon"
 		        android:layout_width="wrap_content"
@@ -112,6 +124,12 @@
 	        android:gravity="center_horizontal"
 	        android:layout_weight="1"
 	        android:orientation="vertical" >
+           
+            <TextView android:id="@+id/tomorrow_forecast3_day"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/days"
+		        android:textSize="12sp"/>
 	        
            <TextView android:id="@+id/tomorrow_forecast3_icon"
 		        android:layout_width="wrap_content"
@@ -137,6 +155,12 @@
 	        android:gravity="center_horizontal"
 	        android:layout_weight="1"
 	        android:orientation="vertical" >
+           
+            <TextView android:id="@+id/tomorrow_forecast4_day"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/days"
+		        android:textSize="12sp"/>
 	        
            <TextView android:id="@+id/tomorrow_forecast4_icon"
 		        android:layout_width="wrap_content"

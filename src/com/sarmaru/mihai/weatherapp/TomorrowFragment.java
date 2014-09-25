@@ -13,7 +13,8 @@ public class TomorrowFragment extends Fragment {
 	
 	// Tomorrow Views
 	private static TextView tomorrowName, tomorrowIcon, tomorrowTemperature, tomorrowDescription;
-	private static TextView tomorrowForecastOne, tomorrowForecastTwo, tomorrowForecastThree, tomorrowForecastFour;
+	private static TextView tomorrowForecastOneTemp, tomorrowForecastTwoTemp, tomorrowForecastThreeTemp, tomorrowForecastFourTemp;
+	private static TextView tomorrowForecastOneDay, tomorrowForecastTwoDay, tomorrowForecastThreeDay, tomorrowForecastFourDay;
 	private static TextView tomorrowForecastOneIcon, tomorrowForecastTwoIcon, tomorrowForecastThreeIcon, tomorrowForecastFourIcon;
 	
 	@Override
@@ -50,9 +51,14 @@ public class TomorrowFragment extends Fragment {
 		tomorrowTemperature = (TextView) rootView.findViewById(R.id.tomorrow_temperature);
 		tomorrowDescription = (TextView) rootView.findViewById(R.id.tomorrow_description);
 		
-		tomorrowForecastOne = (TextView) rootView.findViewById(R.id.tomorrow_forecast1);
-		tomorrowForecastTwo = (TextView) rootView.findViewById(R.id.tomorrow_forecast2);
-		tomorrowForecastThree = (TextView) rootView.findViewById(R.id.tomorrow_forecast3);
-		tomorrowForecastFour = (TextView) rootView.findViewById(R.id.tomorrow_forecast4);
+		tomorrowForecastOneTemp = (TextView) rootView.findViewById(R.id.tomorrow_forecast1);
+		tomorrowForecastTwoTemp = (TextView) rootView.findViewById(R.id.tomorrow_forecast2);
+		tomorrowForecastThreeTemp = (TextView) rootView.findViewById(R.id.tomorrow_forecast3);
+		tomorrowForecastFourTemp = (TextView) rootView.findViewById(R.id.tomorrow_forecast4);
+		
+		tomorrowForecastOneDay = (TextView) rootView.findViewById(R.id.tomorrow_forecast1_day);
+		tomorrowForecastTwoDay = (TextView) rootView.findViewById(R.id.tomorrow_forecast2_day);
+		tomorrowForecastThreeDay = (TextView) rootView.findViewById(R.id.tomorrow_forecast3_day);
+		tomorrowForecastFourDay = (TextView) rootView.findViewById(R.id.tomorrow_forecast4_day);
 	}
 }

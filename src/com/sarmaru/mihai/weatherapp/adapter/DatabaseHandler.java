@@ -69,11 +69,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				KEY_ID + " =?", new String[] {String.valueOf(weather.getId())});
 	}
 	
-	// Insert weatherObject into database (-1 for error)
-	public long insertWeatherObject(WeatherObject weather) {
+	// Insert today weatherObject into database
+	public void insertTodayWeatherObject(WeatherObject weather) {
 		// Get a writable database and insert content values
 		SQLiteDatabase db = this.getWritableDatabase();
-		return db.insert(TABLE_NAME, null, convertWeatherToContentValues(weather));
+		db.insert(TABLE_NAME, null, convertWeatherToContentValues(weather));
+	}
+	
+	// Insert tomorrow weatherObjects into database
+	public void insertTomorrowWeatherObjects(List<WeatherObject> weatherList) {
+		// Get a writable database
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		// Loop each object list and insert into database
+		for (WeatherObject weather : weatherList) {
+			db.insert(TABLE_NAME, null, convertWeatherToContentValues(weather));
+		}
 	}
 	
 	// Read today's weatherObject from database

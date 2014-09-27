@@ -142,7 +142,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// Get a readable database, execute query and return data into a cursor object
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-		cursor.close();
 		
 		// Return rows count
 		return cursor.getCount();

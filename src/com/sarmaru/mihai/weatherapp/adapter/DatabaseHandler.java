@@ -61,12 +61,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 	
-	// Update WeatherObject
-	public int updateWeatherObject(WeatherObject weather) {
+	// Update today WeatherObject
+	public void updateTodayWeatherObject(WeatherObject weather) {
 		// Get a writable database and update content values
 		SQLiteDatabase db = this.getWritableDatabase();
-		return db.update(TABLE_NAME, convertWeatherToContentValues(weather),
-				KEY_ID + " =?", new String[] {String.valueOf(weather.getId())});
+		db.update(TABLE_NAME, convertWeatherToContentValues(weather),
+				KEY_TYPE + " =?", new String[] {String.valueOf(weather.getType())});
+	}
+	
+	// Update tomorrow WeatherObject
+	public void updateTomorrowWeatherObject(List<WeatherObject> weatherList) {
+		// Get a writable database and update content values
+		SQLiteDatabase db = this.getWritableDatabase();
+		// Get list of tomorrow id's
+		List<Integer> idList = getTomorrowWeatherIDs(); 
+		
+		// Loop through list and update weatherObjects 
+		for (int i = 0; i < weatherList.size(); i++) {
+			db.update(TABLE_NAME, convertWeatherToContentValues(weatherList.get(i)),
+					KEY_ID + " =?", new String[] {String.valueOf(idList.get(i))});
+		}
 	}
 	
 	// Insert today weatherObject into database
@@ -170,5 +184,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// Return cv
 		return cv;
 	}
-
+	
+	// Read all tomorrow weatherObjects from database
+	private List<Integer> getTomorrowWeatherIDs() {
+		// Get a readable database, execute query and return data into a cursor object
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_TYPE + " = " + WeatherObject.TOMORROW, null);
+		
+		// Loop each cursor object and add ID's to list
+		List<Integer> idList = new ArrayList<Integer>();
+		if (cursor.moveToFirst()) {
+			do {
+				// Get weather id from cursor
+				idList.add(cursor.getInt(0));
+			} while (cursor.moveToNext());
+		}
+		
+		// Return weather list
+		return idList;
+	}
 }

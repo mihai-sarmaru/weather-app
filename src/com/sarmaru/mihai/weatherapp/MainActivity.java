@@ -2,6 +2,7 @@ package com.sarmaru.mihai.weatherapp;
 
 import java.util.List;
 
+import com.sarmaru.mihai.weatherapp.adapter.DatabaseHandler;
 import com.sarmaru.mihai.weatherapp.adapter.HttpHandler;
 import com.sarmaru.mihai.weatherapp.adapter.JsonParser;
 import com.sarmaru.mihai.weatherapp.adapter.TabsPagerAdapter;
@@ -27,6 +28,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private TabsPagerAdapter mAdapter;
 	private ViewPager viewPager;
 	private WeatherPreferences weatherPrefs;
+	
+	// Database Handler
+	DatabaseHandler db = null;
 
 	// Progress dialog used for async task
 	private ProgressDialog progressDialog = null;
@@ -40,8 +44,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		// Initialize weather preferences
+		// Initialize weather preferences and database
 		weatherPrefs = new WeatherPreferences(this);
+		db = new DatabaseHandler(this);
 		
 		// Tab titles
 		final String[] tabNames = getResources().getStringArray(R.array.weather_tab_names);
@@ -82,16 +87,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	}
 	
 	public void refreshWeather() {
-		// Check Internet connection
-		if (Utils.isNetworkAvailable(this)) {
-			// Execute background task to get and parse weather
-			new ProcessWeatherJsonAsync().execute();
-		} else {
-			// Notify user for no Internet connection
-			Toast.makeText(MainActivity.this, R.string.no_internet_error, Toast.LENGTH_LONG).show();
-			
-			// TODO get info from database
-		}
+		// Set weather objects to null before async task
+		todayWeather = null;
+		tomorrowWeather = null;
+		
+		// Execute background task to get and parse weather
+		new ProcessWeatherJsonAsync().execute();
 	}
 
 	@Override
@@ -152,22 +153,46 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			// Get location and units shared preferences
 			String userLocation = weatherPrefs.getUserLocation();
 			int userUnits = weatherPrefs.getUserUnits();
+
+			// Check Internet connection
+			if (Utils.isNetworkAvailable(MainActivity.this)) {
+				
+				// Format URL string
+				HttpHandler todayHandler = new HttpHandler();
+				String todayFormatUrl = Utils.formatUrlString(getString(R.string.open_weather_maps_url), userLocation, userUnits, WeatherObject.TODAY);
+				// Make HTTP call and get a JSON response
+				String todayJsonString = todayHandler.makeHttpCall(todayFormatUrl, getString(R.string.open_weather_maps_header), getString(R.string.open_weather_maps_api_key));
+				// Parse JSON to a weather object
+				todayWeather = JsonParser.parseWeatherJson(todayJsonString, userUnits);
+				
+				// Format URL string
+				HttpHandler tomorrowHandler = new HttpHandler();
+				String tomorrowFormatUrl = Utils.formatUrlString(getString(R.string.open_weather_maps_forecast_url), userLocation, userUnits, WeatherObject.TOMORROW);
+				// Make HTTP call and get a JSON response
+				String tomorrowJsonString = tomorrowHandler.makeHttpCall(tomorrowFormatUrl, getString(R.string.open_weather_maps_header), getString(R.string.open_weather_maps_api_key));
+				// Parse JSON to a weather object
+				tomorrowWeather = JsonParser.parseForecastJson(tomorrowJsonString, userUnits);
+				
+				if (todayWeather != null && tomorrowWeather != null) {
+					// If database is empty -> create, else -> update
+					if (db.getDatabaseRowsCount() == 0) {
+						// Insert weather objects
+						db.insertTodayWeatherObject(todayWeather);
+						db.insertTomorrowWeatherObjects(tomorrowWeather);
+					} else {
+						// Update weather objects
+						db.updateTodayWeatherObject(todayWeather);
+						db.updateTomorrowWeatherObject(tomorrowWeather);
+					}
+				}
+				
+			} else if (db.getDatabaseRowsCount() != 0) {
+				// Get weather and forecast from database
+				todayWeather = db.getTodayWeatherObject();
+				tomorrowWeather = db.getTomorrowWeatherObjects();
+			}
 			
-			// Format URL string
-			HttpHandler todayHandler = new HttpHandler();
-			String todayFormatUrl = Utils.formatUrlString(getString(R.string.open_weather_maps_url), userLocation, userUnits, WeatherObject.TODAY);
-			// Make HTTP call and get a JSON response
-			String todayJsonString = todayHandler.makeHttpCall(todayFormatUrl, getString(R.string.open_weather_maps_header), getString(R.string.open_weather_maps_api_key));
-			// Parse JSON to a weather object
-			todayWeather = JsonParser.parseWeatherJson(todayJsonString, userUnits);
-			
-			// Format URL string
-			HttpHandler tomorrowHandler = new HttpHandler();
-			String tomorrowFormatUrl = Utils.formatUrlString(getString(R.string.open_weather_maps_forecast_url), userLocation, userUnits, WeatherObject.TOMORROW);
-			// Make HTTP call and get a JSON response
-			String tomorrowJsonString = tomorrowHandler.makeHttpCall(tomorrowFormatUrl, getString(R.string.open_weather_maps_header), getString(R.string.open_weather_maps_api_key));
-			// Parse JSON to a weather object
-			tomorrowWeather = JsonParser.parseForecastJson(tomorrowJsonString, userUnits);
+			// Return null when finished background task
 			return null;
 		}
 		
@@ -178,9 +203,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			if (todayWeather != null && tomorrowWeather != null) {
 				// Display weather object in views
 				TodayFragment.displayTodayWeather(MainActivity.this, todayWeather);
-				
 				// Display tomorrow forecast
 				TomorrowFragment.displayTomorrowWeather(MainActivity.this, tomorrowWeather);
+				
+				if (!Utils.isNetworkAvailable(MainActivity.this)) {
+					// Notify user for no Internet connection
+					Toast.makeText(MainActivity.this, R.string.no_internet_error, Toast.LENGTH_LONG).show();
+				}
 				
 			} else {
 				// Notify user that response was negative
@@ -189,8 +218,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			
 			// Dismiss progress dialog
 			progressDialog.dismiss();
-
 		}
-		
 	}
 }

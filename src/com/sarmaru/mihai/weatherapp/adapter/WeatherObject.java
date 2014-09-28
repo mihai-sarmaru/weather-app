@@ -120,7 +120,7 @@ public class WeatherObject {
 		return this._wind;
 	}
 	public void setWind(String wind) {
-		if (wind == "-") {
+		if (wind.equals("-")) {
 			this._wind = wind;
 		} else {
 			DecimalFormat df = new DecimalFormat("#.#");
@@ -139,7 +139,7 @@ public class WeatherObject {
 		return this._pressure;
 	}
 	public void setPressure(String pressure) {
-		if (pressure == "-") {
+		if (pressure.equals("-")) {
 			this._pressure = pressure;
 		} else {
 			DecimalFormat df = new DecimalFormat("#");

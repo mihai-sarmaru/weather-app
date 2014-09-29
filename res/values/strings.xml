@@ -7,7 +7,7 @@
     <string name="menu_units">Units</string>
     <string name="menu_refresh">Refresh</string>
     
-    <string name="progress_dialog_message">Getting weather..</string>
+    <string name="progress_dialog_message">Fetching weather..</string>
     
     <string-array name="weather_tab_names">
         <item>Today</item>
@@ -39,6 +39,7 @@
     <string name="api_error">Could not get latest weather data</string>
     <string name="no_internet_error">No Internet connection</string>
     <string name="outdated_weather">Weather data is outdated</string>
+    <string name="no_weather_data">No weather data!</string>
     
     <string name="dialog_location_title">Location</string>
     <string name="dialog_units_title">Unit system</string>
@@ -61,5 +62,7 @@
     <string name="weather_snowy">&#xf01b;</string>
     <string name="weather_thunder">&#xf01e;</string>
     <string name="weather_drizzle">&#xf01c;</string>
+    
+    <string name="thermometer">&#xf055;</string>
 
 </resources>

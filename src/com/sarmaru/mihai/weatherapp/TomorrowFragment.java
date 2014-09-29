@@ -15,6 +15,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class TomorrowFragment extends Fragment {
@@ -25,6 +26,8 @@ public class TomorrowFragment extends Fragment {
 	private static TextView tomorrowForecastOneDay, tomorrowForecastTwoDay, tomorrowForecastThreeDay, tomorrowForecastFourDay;
 	private static TextView tomorrowForecastOneIcon, tomorrowForecastTwoIcon, tomorrowForecastThreeIcon, tomorrowForecastFourIcon;
 	private static TextView tomorrowCopyright;
+	
+	private static RelativeLayout tomorrowMain, tomorrowNoLayout;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -41,6 +44,14 @@ public class TomorrowFragment extends Fragment {
 
 	// Initialize text views
 	private void initializeViews(View rootView) {
+		// Relative layouts
+		tomorrowMain = (RelativeLayout) rootView.findViewById(R.id.tomorrow_main_layout);
+		tomorrowNoLayout = (RelativeLayout) rootView.findViewById(R.id.tomorrow_no_layout);
+		
+		// Hide main layout and show no weather layout
+		tomorrowMain.setVisibility(View.GONE);
+		tomorrowNoLayout.setVisibility(View.VISIBLE);
+		
 		tomorrowName = (TextView) rootView.findViewById(R.id.tomorrow_name);
 		
 		// Set weatherFont to icon TextView
@@ -56,6 +67,10 @@ public class TomorrowFragment extends Fragment {
 		tomorrowForecastTwoIcon.setTypeface(weatherFont);
 		tomorrowForecastThreeIcon.setTypeface(weatherFont);
 		tomorrowForecastFourIcon.setTypeface(weatherFont);
+		
+		// Set no weather icon
+		TextView tomorrowNoWeatherIcon = (TextView) rootView.findViewById(R.id.tomorrow_no_weather_icon);
+		tomorrowNoWeatherIcon.setTypeface(weatherFont);
 		
 		tomorrowTemperature = (TextView) rootView.findViewById(R.id.tomorrow_temperature);
 		tomorrowDescription = (TextView) rootView.findViewById(R.id.tomorrow_description);
@@ -75,6 +90,10 @@ public class TomorrowFragment extends Fragment {
 	
 	// Display weather object list to text views
 	public static void displayTomorrowWeather(Context context, List<WeatherObject> weatherList) {
+		// Set tomorrow main layout
+		tomorrowMain.setVisibility(View.VISIBLE);
+		tomorrowNoLayout.setVisibility(View.GONE);
+				
 		// Name and icon
 		tomorrowName.setText(weatherList.get(0).getLocation());
 		tomorrowIcon.setText(context.getString(weatherList.get(0).getIcon()));

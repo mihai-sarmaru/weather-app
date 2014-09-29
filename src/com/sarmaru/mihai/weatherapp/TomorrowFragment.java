@@ -24,6 +24,7 @@ public class TomorrowFragment extends Fragment {
 	private static TextView tomorrowForecastOneTemp, tomorrowForecastTwoTemp, tomorrowForecastThreeTemp, tomorrowForecastFourTemp;
 	private static TextView tomorrowForecastOneDay, tomorrowForecastTwoDay, tomorrowForecastThreeDay, tomorrowForecastFourDay;
 	private static TextView tomorrowForecastOneIcon, tomorrowForecastTwoIcon, tomorrowForecastThreeIcon, tomorrowForecastFourIcon;
+	private static TextView tomorrowCopyright;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -68,6 +69,8 @@ public class TomorrowFragment extends Fragment {
 		tomorrowForecastTwoDay = (TextView) rootView.findViewById(R.id.tomorrow_forecast2_day);
 		tomorrowForecastThreeDay = (TextView) rootView.findViewById(R.id.tomorrow_forecast3_day);
 		tomorrowForecastFourDay = (TextView) rootView.findViewById(R.id.tomorrow_forecast4_day);
+		
+		tomorrowCopyright = (TextView) rootView.findViewById(R.id.tomorrow_copyright);
 	}
 	
 	// Display weather object list to text views
@@ -110,11 +113,18 @@ public class TomorrowFragment extends Fragment {
 		tomorrowForecastThreeDay.setText(currentDay.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US));
 		currentDay.add(Calendar.DATE, 1);
 		tomorrowForecastFourDay.setText(currentDay.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US));
+		
+		tomorrowCopyright.setText(context.getText(R.string.copyright));
 	}
 	
 	// Format temperature to remove digits
 	private static String formatForecastTemperature (String temperature) {
 		DecimalFormat df = new DecimalFormat("#");
 		return df.format(Double.parseDouble(temperature)).toString();
+	}
+	
+	// Notify user that weather info is outdated 
+	public static void displayOutdatedInfo(Context context) {
+		tomorrowCopyright.setText(context.getString(R.string.outdated_weather));
 	}
 }

@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class TodayFragment extends Fragment {
@@ -18,6 +19,8 @@ public class TodayFragment extends Fragment {
 	private static TextView todayName, todayIcon, todayTemperature, todayDescription, todayPrecipitation, todayWind, todayHumidity, todayPressure;
 	private static TextView todayPrecipitationIcon, todayWindIcon, todayHumidityIcon, todayPressureIcon;
 	private static TextView todayCopyright;
+	
+	private static RelativeLayout todayMain, todayNoLayout;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -34,12 +37,24 @@ public class TodayFragment extends Fragment {
 	
 	// Initialize text views
 	private void initializeViews(View rootView) {
+		// Relative layouts
+		todayMain = (RelativeLayout) rootView.findViewById(R.id.today_main_layout);
+		todayNoLayout = (RelativeLayout) rootView.findViewById(R.id.today_no_layout);
+		
+		// Hide main layout and show no weather layout
+		todayMain.setVisibility(View.GONE);
+		todayNoLayout.setVisibility(View.VISIBLE);
+		
 		todayName = (TextView) rootView.findViewById(R.id.today_name);
 		
 		// Set weatherFont to icon TextView
 		todayIcon = (TextView) rootView.findViewById(R.id.today_icon);
 		Typeface weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "weathericons-font.ttf");
 		todayIcon.setTypeface(weatherFont);
+		
+		// Set no weather icon
+		TextView todayNoWeatherIcon = (TextView) rootView.findViewById(R.id.today_no_weather_icon);
+		todayNoWeatherIcon.setTypeface(weatherFont);
 		
 		// Set details Icons
 		todayPrecipitationIcon = (TextView) rootView.findViewById(R.id.today_precipitation_icon);
@@ -63,6 +78,10 @@ public class TodayFragment extends Fragment {
 	
 	// Display weather object to text views
 	public static void displayTodayWeather(Context context, WeatherObject weather) {
+		// Set today main layout
+		todayMain.setVisibility(View.VISIBLE);
+		todayNoLayout.setVisibility(View.GONE);
+		
 		// Name and icon
 		todayName.setText(weather.getLocation());
 		todayIcon.setText(context.getString(weather.getIcon()));

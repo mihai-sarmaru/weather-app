@@ -4,190 +4,223 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffffff" >
+    
+    <RelativeLayout
+	    android:id="@+id/tomorrow_main_layout"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical" >
      
-    <TextView android:id="@+id/tomorrow_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/country_name"
-        android:textSize="22sp"
-        android:layout_centerInParent="true"/>
-
-    <TextView android:id="@+id/tomorrow_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/tomorrow_name"
-        android:layout_centerHorizontal="true"
-        android:text="@string/weather_sunny"
-        android:textSize="90sp"
-        android:textStyle="bold"/>
+	    <TextView android:id="@+id/tomorrow_name"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:layout_alignParentTop="true"
+	        android:layout_centerHorizontal="true"
+	        android:text="@string/country_name"
+	        android:textSize="22sp"
+	        android:layout_centerInParent="true"/>
+	
+	    <TextView android:id="@+id/tomorrow_icon"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:layout_below="@+id/tomorrow_name"
+	        android:layout_centerHorizontal="true"
+	        android:text="@string/weather_sunny"
+	        android:textSize="90sp"
+	        android:textStyle="bold"/>
+	    
+	    <TextView android:id="@+id/tomorrow_temperature"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/tomorrow_icon"
+	        android:layout_centerHorizontal="true"
+	        android:text="@string/temperature"
+	        android:textSize="32sp"
+	        android:textStyle="bold"/>
+	         
+	    <TextView android:id="@+id/tomorrow_description"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="20dp"
+	        android:layout_above="@+id/tomorrow_lienar_layout"
+	        android:layout_centerHorizontal="true"
+	        android:text="@string/description"
+	        android:textSize="22sp"/>
+	    
+	    <LinearLayout
+	        android:id="@+id/tomorrow_lienar_layout"
+	        android:baselineAligned="false"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="30dp"
+	        android:layout_marginRight="30dp"
+	        android:layout_above="@+id/tomorrow_copyright"
+	        android:layout_centerHorizontal="true"
+	        android:orientation="horizontal" >
+	        
+	        <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="5dp"
+		        android:layout_marginRight="5dp"
+		        android:gravity="center_horizontal"
+		        android:layout_weight="1"
+		        android:orientation="vertical" >
+		        
+	            <TextView android:id="@+id/tomorrow_forecast1_day"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/days"
+			        android:textSize="12sp"/>
+		        
+	           <TextView android:id="@+id/tomorrow_forecast1_icon"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/weather_sunny"
+			        android:textSize="32sp"
+			        android:textStyle="bold"/>
+	           
+	           <TextView android:id="@+id/tomorrow_forecast1"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/temperature"
+			        android:textSize="14sp"
+			        android:textStyle="bold"/>
+		            
+	        </LinearLayout>
+	        
+	        <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="5dp"
+		        android:layout_marginRight="5dp"
+		        android:gravity="center_horizontal"
+		        android:layout_weight="1"
+		        android:orientation="vertical" >
+	           
+	            <TextView android:id="@+id/tomorrow_forecast2_day"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/days"
+			        android:textSize="12sp"/>
+		        
+	           <TextView android:id="@+id/tomorrow_forecast2_icon"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/weather_sunny"
+			        android:textSize="32sp"
+			        android:textStyle="bold"/>
+	           
+	           <TextView android:id="@+id/tomorrow_forecast2"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/temperature"
+			        android:textSize="14sp"
+			        android:textStyle="bold"/>
+		            
+	        </LinearLayout>
+	        
+	        <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="5dp"
+		        android:layout_marginRight="5dp"
+		        android:gravity="center_horizontal"
+		        android:layout_weight="1"
+		        android:orientation="vertical" >
+	           
+	            <TextView android:id="@+id/tomorrow_forecast3_day"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/days"
+			        android:textSize="12sp"/>
+		        
+	           <TextView android:id="@+id/tomorrow_forecast3_icon"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/weather_sunny"
+			        android:textSize="32sp"
+			        android:textStyle="bold"/>
+	           
+	           <TextView android:id="@+id/tomorrow_forecast3"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/temperature"
+			        android:textSize="14sp"
+			        android:textStyle="bold"/>
+		            
+	        </LinearLayout>
+	        
+	        <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="5dp"
+		        android:layout_marginRight="5dp"
+		        android:gravity="center_horizontal"
+		        android:layout_weight="1"
+		        android:orientation="vertical" >
+	           
+	            <TextView android:id="@+id/tomorrow_forecast4_day"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/days"
+			        android:textSize="12sp"/>
+		        
+	           <TextView android:id="@+id/tomorrow_forecast4_icon"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/weather_sunny"
+			        android:textSize="32sp"
+			        android:textStyle="bold"/>
+	           
+	           <TextView android:id="@+id/tomorrow_forecast4"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/temperature"
+			        android:textSize="14sp"
+			        android:textStyle="bold"/>
+		            
+	        </LinearLayout>
+	
+	    </LinearLayout>
+	
+	    <TextView android:id="@+id/tomorrow_copyright"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+			android:layout_marginTop="20dp"
+			android:layout_marginBottom="5dp"
+	        android:layout_centerHorizontal="true"
+	        android:layout_alignParentBottom="true"
+	        android:text="@string/copyright"
+	        android:textSize="10sp"/>
+	    
+    </RelativeLayout>
     
-    <TextView android:id="@+id/tomorrow_temperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tomorrow_icon"
-        android:layout_centerHorizontal="true"
-        android:text="@string/temperature"
-        android:textSize="32sp"
-        android:textStyle="bold"/>
-         
-    <TextView android:id="@+id/tomorrow_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_above="@+id/tomorrow_lienar_layout"
-        android:layout_centerHorizontal="true"
-        android:text="@string/description"
-        android:textSize="22sp"/>
-    
-    <LinearLayout
-        android:id="@+id/tomorrow_lienar_layout"
-        android:baselineAligned="false"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_above="@+id/tomorrow_copyright"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal" >
-        
-        <LinearLayout
-	        android:layout_width="fill_parent"
+    <RelativeLayout
+	    android:id="@+id/tomorrow_no_layout"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:visibility="gone" >
+	    
+        <TextView android:id="@+id/tomorrow_no_weather_icon"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="5dp"
-	        android:layout_marginRight="5dp"
-	        android:gravity="center_horizontal"
-	        android:layout_weight="1"
-	        android:orientation="vertical" >
-	        
-            <TextView android:id="@+id/tomorrow_forecast1_day"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/days"
-		        android:textSize="12sp"/>
-	        
-           <TextView android:id="@+id/tomorrow_forecast1_icon"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/weather_sunny"
-		        android:textSize="32sp"
-		        android:textStyle="bold"/>
-           
-           <TextView android:id="@+id/tomorrow_forecast1"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/temperature"
-		        android:textSize="14sp"
-		        android:textStyle="bold"/>
-	            
-        </LinearLayout>
-        
-        <LinearLayout
-	        android:layout_width="fill_parent"
+	        android:layout_centerInParent="true"
+	        android:text="@string/thermometer"
+	        android:textSize="120sp"
+	        android:textStyle="bold"/>
+	    
+        <TextView android:id="@+id/tomorrow_no_weather"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="5dp"
-	        android:layout_marginRight="5dp"
-	        android:gravity="center_horizontal"
-	        android:layout_weight="1"
-	        android:orientation="vertical" >
-           
-            <TextView android:id="@+id/tomorrow_forecast2_day"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/days"
-		        android:textSize="12sp"/>
-	        
-           <TextView android:id="@+id/tomorrow_forecast2_icon"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/weather_sunny"
-		        android:textSize="32sp"
-		        android:textStyle="bold"/>
-           
-           <TextView android:id="@+id/tomorrow_forecast2"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/temperature"
-		        android:textSize="14sp"
-		        android:textStyle="bold"/>
-	            
-        </LinearLayout>
-        
-        <LinearLayout
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="5dp"
-	        android:layout_marginRight="5dp"
-	        android:gravity="center_horizontal"
-	        android:layout_weight="1"
-	        android:orientation="vertical" >
-           
-            <TextView android:id="@+id/tomorrow_forecast3_day"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/days"
-		        android:textSize="12sp"/>
-	        
-           <TextView android:id="@+id/tomorrow_forecast3_icon"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/weather_sunny"
-		        android:textSize="32sp"
-		        android:textStyle="bold"/>
-           
-           <TextView android:id="@+id/tomorrow_forecast3"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/temperature"
-		        android:textSize="14sp"
-		        android:textStyle="bold"/>
-	            
-        </LinearLayout>
-        
-        <LinearLayout
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="5dp"
-	        android:layout_marginRight="5dp"
-	        android:gravity="center_horizontal"
-	        android:layout_weight="1"
-	        android:orientation="vertical" >
-           
-            <TextView android:id="@+id/tomorrow_forecast4_day"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/days"
-		        android:textSize="12sp"/>
-	        
-           <TextView android:id="@+id/tomorrow_forecast4_icon"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/weather_sunny"
-		        android:textSize="32sp"
-		        android:textStyle="bold"/>
-           
-           <TextView android:id="@+id/tomorrow_forecast4"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/temperature"
-		        android:textSize="14sp"
-		        android:textStyle="bold"/>
-	            
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <TextView android:id="@+id/tomorrow_copyright"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-		android:layout_marginTop="20dp"
-		android:layout_marginBottom="5dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:text="@string/copyright"
-        android:textSize="10sp"/>
+	        android:layout_centerHorizontal="true"
+	        android:layout_below="@+id/tomorrow_no_weather_icon"
+	        android:text="@string/no_weather_data"
+	        android:textSize="22sp"/>
+	    
+    </RelativeLayout>
      
 </RelativeLayout>

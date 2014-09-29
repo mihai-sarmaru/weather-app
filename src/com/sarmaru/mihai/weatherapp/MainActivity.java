@@ -207,6 +207,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				TomorrowFragment.displayTomorrowWeather(MainActivity.this, tomorrowWeather);
 				
 				if (!Utils.isNetworkAvailable(MainActivity.this)) {
+					// Notify user that weather is outdated
+					TodayFragment.displayOutdatedInfo(MainActivity.this);
+					TomorrowFragment.displayOutdatedInfo(MainActivity.this);
 					// Notify user for no Internet connection
 					Toast.makeText(MainActivity.this, R.string.no_internet_error, Toast.LENGTH_LONG).show();
 				}

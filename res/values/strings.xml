@@ -38,6 +38,7 @@
     
     <string name="api_error">Could not get latest weather data</string>
     <string name="no_internet_error">No Internet connection</string>
+    <string name="outdated_weather">Weather data is outdated</string>
     
     <string name="dialog_location_title">Location</string>
     <string name="dialog_units_title">Unit system</string>

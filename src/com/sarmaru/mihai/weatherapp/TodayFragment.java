@@ -17,6 +17,7 @@ public class TodayFragment extends Fragment {
 	// Today Views
 	private static TextView todayName, todayIcon, todayTemperature, todayDescription, todayPrecipitation, todayWind, todayHumidity, todayPressure;
 	private static TextView todayPrecipitationIcon, todayWindIcon, todayHumidityIcon, todayPressureIcon;
+	private static TextView todayCopyright;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -56,6 +57,8 @@ public class TodayFragment extends Fragment {
 		todayWind = (TextView) rootView.findViewById(R.id.today_wind);
 		todayHumidity = (TextView) rootView.findViewById(R.id.today_humidity);
 		todayPressure = (TextView) rootView.findViewById(R.id.today_pressure);
+		
+		todayCopyright = (TextView) rootView.findViewById(R.id.today_copyright);
 	}
 	
 	// Display weather object to text views
@@ -81,6 +84,13 @@ public class TodayFragment extends Fragment {
 		todayWind.setText(weather.getWind() + " " + context.getString(R.string.speed));
 		todayHumidity.setText(weather.getHumidity() + " " + context.getString(R.string.percent));
 		todayPressure.setText(weather.getPressure() + " " + context.getString(R.string.mercury));
+		
+		todayCopyright.setText(context.getString(R.string.copyright));
+	}
+	
+	// Notify user that weather info is outdated 
+	public static void displayOutdatedInfo(Context context) {
+		todayCopyright.setText(context.getString(R.string.outdated_weather));
 	}
 }
 

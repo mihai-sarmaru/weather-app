@@ -114,7 +114,7 @@ public class TomorrowFragment extends Fragment {
 		}
 		
 		// Details
-		tomorrowDescription.setText(weatherList.get(0).getDescription());
+		tomorrowDescription.setText(weatherList.get(0).getDescription().toLowerCase(Locale.US));
 		
 		// Forecast items
 		tomorrowForecastOneIcon.setText(context.getString(weatherList.get(1).getIcon()));

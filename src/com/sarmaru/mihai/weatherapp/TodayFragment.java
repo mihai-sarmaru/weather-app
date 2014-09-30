@@ -1,5 +1,7 @@
 package com.sarmaru.mihai.weatherapp;
 
+import java.util.Locale;
+
 import com.sarmaru.mihai.weatherapp.adapter.WeatherObject;
 
 import android.content.Context;
@@ -90,7 +92,7 @@ public class TodayFragment extends Fragment {
 		displayUnitSystemViews(context, weather);
 		
 		// Details
-		todayDescription.setText(weather.getDescription());
+		todayDescription.setText(weather.getDescription().toLowerCase(Locale.US));
 		if (weather.getPrecipitation() == "-") {
 			todayPrecipitation.setText(weather.getPrecipitation());
 		} else {

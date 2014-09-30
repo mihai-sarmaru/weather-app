@@ -4,9 +4,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     
-    <dimen name="icon_text_size">90sp</dimen>
+    <dimen name="icon_text_size">60sp</dimen>
     <dimen name="temperature_text_size">32sp</dimen>
-    <dimen name="today_details_margins">20dp</dimen>
+    <dimen name="today_details_margins">25dp</dimen>
     <dimen name="tomorrow_details_margins">30dp</dimen>
 
 </resources>

@@ -4,7 +4,7 @@
     <string name="app_name">WeatherApp</string>
     
     <string name="menu_location">Location</string>
-    <string name="menu_units">Units</string>
+    <string name="menu_units">Unit system</string>
     <string name="menu_refresh">Refresh</string>
     
     <string name="progress_dialog_message">Fetching weather..</string>
@@ -32,8 +32,10 @@
     <string name="celsius">°C</string>
     <string name="fahrenheit">°F</string>
     <string name="mercury">mmHG</string>
+    <string name="pascal">hPa</string>
     <string name="percent">%</string>
     <string name="speed">km/h</string>
+    <string name="speed_imperial">mps</string>
     <string name="millimeter">mm</string>
     
     <string name="api_error">Could not get latest weather data</string>

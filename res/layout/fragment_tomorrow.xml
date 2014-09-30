@@ -206,7 +206,7 @@
 	    android:visibility="gone" >
 	    
         <TextView android:id="@+id/tomorrow_no_weather_icon"
-	        android:layout_width="wrap_content"
+	        android:layout_width="40dp"
 	        android:layout_height="wrap_content"
 	        android:layout_centerInParent="true"
 	        android:text="@string/thermometer"

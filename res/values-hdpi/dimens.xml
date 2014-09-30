@@ -6,7 +6,7 @@
     
     <dimen name="icon_text_size">90sp</dimen>
     <dimen name="temperature_text_size">32sp</dimen>
-    <dimen name="today_details_margins">20dp</dimen>
+    <dimen name="today_details_margins">30dp</dimen>
     <dimen name="tomorrow_details_margins">30dp</dimen>
 
 </resources>

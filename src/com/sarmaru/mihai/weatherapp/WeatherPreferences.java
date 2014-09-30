@@ -59,6 +59,7 @@ public class WeatherPreferences {
 		// Crate an EditText view inside the dialog
 		final EditText inputField = new EditText(activity);
 		inputField.setInputType(InputType.TYPE_CLASS_TEXT);
+		inputField.setHint(R.string.dialog_location_hint);
 		builder.setView(inputField);
 		
 		// Set positive button

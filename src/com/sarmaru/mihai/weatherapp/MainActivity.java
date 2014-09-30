@@ -190,6 +190,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				// Get weather and forecast from database
 				todayWeather = db.getTodayWeatherObject();
 				tomorrowWeather = db.getTomorrowWeatherObjects();
+				
+				// Set user preferences from database
+				weatherPrefs.setUserLocation(todayWeather.getLocation());
+				weatherPrefs.setUserUnits(todayWeather.getUnit());
 			}
 			
 			// Return null when finished background task

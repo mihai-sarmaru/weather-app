@@ -46,7 +46,9 @@ public class JsonParser {
 			JSONObject json = new JSONObject(jsonString);
 
 			// Location
-			String location = json.getString(TAG_NAME) + ", " + json.getJSONObject(TAG_SYS).getString(TAG_COUNTRY);
+			String location = json.getString(TAG_NAME).isEmpty() ?
+					json.getJSONObject(TAG_SYS).getString(TAG_COUNTRY) :
+					json.getString(TAG_NAME) + ", " + json.getJSONObject(TAG_SYS).getString(TAG_COUNTRY);
 			weather.setLocation(location);
 
 			// Icon
@@ -89,7 +91,9 @@ public class JsonParser {
 				WeatherObject weatherForecast = new WeatherObject();
 				
 				// Location
-				String location = json.getJSONObject(TAG_CITY).getString(TAG_NAME) + ", " + json.getJSONObject(TAG_CITY).getString(TAG_COUNTRY);
+				String location = json.getJSONObject(TAG_CITY).getString(TAG_NAME).isEmpty() ?
+						json.getJSONObject(TAG_CITY).getString(TAG_COUNTRY) :
+						json.getJSONObject(TAG_CITY).getString(TAG_NAME) + ", " + json.getJSONObject(TAG_CITY).getString(TAG_COUNTRY);
 				weatherForecast.setLocation(location);
 				
 				// Icon

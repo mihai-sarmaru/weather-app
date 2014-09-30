@@ -28,7 +28,7 @@
 	        android:layout_below="@+id/today_name"
 	        android:layout_centerHorizontal="true"
 	        android:text="@string/weather_sunny"
-	        android:textSize="90sp"
+	        android:textSize="@dimen/icon_text_size"
 	        android:textStyle="bold"/>
 	    
 	    <TextView android:id="@+id/today_temperature"
@@ -37,7 +37,7 @@
 	        android:layout_below="@+id/today_icon"
 	        android:layout_centerHorizontal="true"
 	        android:text="@string/temperature"
-	        android:textSize="32sp"
+	        android:textSize="@dimen/temperature_text_size"
 	        android:textStyle="bold"/>
 	         
 	    <TextView android:id="@+id/today_description"
@@ -54,6 +54,8 @@
 	        android:baselineAligned="false"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="@dimen/today_details_margins"
+	        android:layout_marginRight="@dimen/today_details_margins"
 	        android:layout_above="@+id/today_copyright"
 	        android:layout_centerHorizontal="true"
 	        android:orientation="horizontal" >
@@ -61,7 +63,6 @@
 	        <LinearLayout
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
-		        android:layout_marginLeft="20dp"
 		        android:layout_marginRight="10dp"
 		        android:layout_weight="1"
 		        android:orientation="vertical" >
@@ -112,7 +113,6 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_marginLeft="10dp"
-		        android:layout_marginRight="20dp"
 		        android:layout_weight="1"
 		        android:orientation="vertical" >
 	            
@@ -180,7 +180,7 @@
 	    android:visibility="gone" >
 	    
         <TextView android:id="@+id/today_no_weather_icon"
-	        android:layout_width="wrap_content"
+	        android:layout_width="40dp"
 	        android:layout_height="wrap_content"
 	        android:layout_centerInParent="true"
 	        android:text="@string/thermometer"

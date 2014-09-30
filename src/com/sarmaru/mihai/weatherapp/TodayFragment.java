@@ -1,5 +1,7 @@
 package com.sarmaru.mihai.weatherapp;
 
+import java.util.Locale;
+
 import com.sarmaru.mihai.weatherapp.adapter.WeatherObject;
 
 import android.content.Context;
@@ -86,30 +88,39 @@ public class TodayFragment extends Fragment {
 		todayName.setText(weather.getLocation());
 		todayIcon.setText(context.getString(weather.getIcon()));
 		
-		// Temperature units
-		if (weather.getUnit() == WeatherObject.METRIC || weather.getUnit() == WeatherObject.DEFAULT) {
-			todayTemperature.setText(weather.getTemperature() + " " + context.getString(R.string.celsius));
-		} else if (weather.getUnit() == WeatherObject.IMPERIAL) {
-			todayTemperature.setText(weather.getTemperature() + " " + context.getString(R.string.fahrenheit));
-		}
+		// Temperature, pressure and wind in specific units
+		displayUnitSystemViews(context, weather);
 		
 		// Details
-		todayDescription.setText(weather.getDescription());
+		todayDescription.setText(weather.getDescription().toLowerCase(Locale.US));
 		if (weather.getPrecipitation() == "-") {
 			todayPrecipitation.setText(weather.getPrecipitation());
 		} else {
 			todayPrecipitation.setText(weather.getPrecipitation() + " " + context.getString(R.string.millimeter));
 		}
-		todayWind.setText(weather.getWind() + " " + context.getString(R.string.speed));
-		todayHumidity.setText(weather.getHumidity() + " " + context.getString(R.string.percent));
-		todayPressure.setText(weather.getPressure() + " " + context.getString(R.string.mercury));
 		
+		todayHumidity.setText(weather.getHumidity() + " " + context.getString(R.string.percent));		
 		todayCopyright.setText(context.getString(R.string.copyright));
 	}
 	
 	// Notify user that weather info is outdated 
 	public static void displayOutdatedInfo(Context context) {
 		todayCopyright.setText(context.getString(R.string.outdated_weather));
+	}
+	
+	private static void displayUnitSystemViews(Context context, WeatherObject weather) {
+		if (weather.getUnit() == WeatherObject.METRIC || weather.getUnit() == WeatherObject.DEFAULT) {
+			todayTemperature.setText(weather.getTemperature() + " " + context.getString(R.string.celsius));
+			todayWind.setText(weather.getWind() + " " + context.getString(R.string.speed));
+			// Convert Pascal to mmHG
+			String metricPressure = (String.valueOf((int)(Integer.parseInt(weather.getPressure()) / 1.33)));
+			todayPressure.setText(metricPressure + " " + context.getString(R.string.mercury));
+		} else if (weather.getUnit() == WeatherObject.IMPERIAL) {
+			todayTemperature.setText(weather.getTemperature() + " " + context.getString(R.string.fahrenheit));
+			todayWind.setText(weather.getWind() + " " + context.getString(R.string.speed_imperial));
+			todayPressure.setText(weather.getPressure() + " " + context.getString(R.string.pascal));
+		}
+		
 	}
 }
 

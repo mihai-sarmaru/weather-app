@@ -44,6 +44,7 @@
     <string name="no_weather_data">No weather data!</string>
     
     <string name="dialog_location_title">Location</string>
+    <string name="dialog_location_hint">City</string>
     <string name="dialog_units_title">Unit system</string>
     <string name="dialog_positive_button">OK</string>
     <string name="dialog_negative_button">Cancel</string>

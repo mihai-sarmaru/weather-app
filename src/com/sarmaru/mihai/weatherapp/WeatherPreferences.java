@@ -21,6 +21,12 @@ public class WeatherPreferences {
 	private static final String PREF_UNITS = "units";
 	private static final int PREF_DEFAULT_UNITS = WeatherObject.METRIC;
 	
+	// Color preferences
+	private static final String PREF_COLOR = "color";
+	private static final String PREF_COLOR_TABS = "darkcolor";
+	private static final int PREF_DEFAULT_COLOR = R.color.actionbar_blue;
+	private static final int PREF_DEFAULT_COLOR_TABS = R.color.actionbar_blue_dark;
+	
 	// Constructor
 	public WeatherPreferences(Activity activity) {
 		// Get preferences in private mode
@@ -45,6 +51,26 @@ public class WeatherPreferences {
 	// Set location to preferences
 	void setUserUnits(int units) {
 		prefs.edit().putInt(PREF_UNITS, units).commit();
+	}
+	
+	// Get ActionBar color
+	int getActionBarColor() {
+		return prefs.getInt(PREF_COLOR, PREF_DEFAULT_COLOR);
+	}
+	
+	// Set ActionBar color
+	void setActionBarColor(int color) {
+		prefs.edit().putInt(PREF_COLOR, color).commit();
+	}
+	
+	// Get ActionBar tabs color
+	int getActionBarTabsColor() {
+		return prefs.getInt(PREF_COLOR_TABS, PREF_DEFAULT_COLOR_TABS);
+	}
+	
+	// Set ActionBar tabs color
+	void setActionBarTabsColor(int color) {
+		prefs.edit().putInt(PREF_COLOR_TABS, color).commit();
 	}
 	
 	// Location preference dialog

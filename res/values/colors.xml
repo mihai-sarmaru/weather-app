@@ -33,4 +33,29 @@
     <color name="actionbar_gray">#95A5A6</color>
     <color name="actionbar_gray_dark">#7F8C8D</color>
     
+    <!-- Color arrays for normal and dark shades -->
+    <array name="actionbar_color_array">
+        <item>@color/actionbar_turquoise</item>
+        <item>@color/actionbar_green</item>
+        <item>@color/actionbar_blue</item>
+        <item>@color/actionbar_purpule</item>
+        <item>@color/actionbar_indigo</item>
+        <item>@color/actionbar_yellow</item>
+        <item>@color/actionbar_orange</item>
+        <item>@color/actionbar_red</item>
+        <item>@color/actionbar_gray</item>
+    </array>
+    
+    <array name="actionbar_dark_color_array">
+        <item>@color/actionbar_turquoise_dark</item>
+        <item>@color/actionbar_green_dark</item>
+        <item>@color/actionbar_blue_dark</item>
+        <item>@color/actionbar_purpule_dark</item>
+        <item>@color/actionbar_indigo_dark</item>
+        <item>@color/actionbar_yellow_dark</item>
+        <item>@color/actionbar_orange_dark</item>
+        <item>@color/actionbar_red_dark</item>
+        <item>@color/actionbar_gray_dark</item>
+    </array>
+    
 </resources>

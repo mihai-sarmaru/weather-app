@@ -62,11 +62,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		actionBar.setHomeButtonEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
-		// TODO get colors from shared preferences
+		// Get colors from shared preferences
+		int actionBarColor = weatherPrefs.getActionBarColor();
+		int actionBarTabsColor = weatherPrefs.getActionBarTabsColor();
 		
-		// ActionBar colors
-		actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.actionbar_blue)));
-		actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.actionbar_blue_dark)));
+		// Set ActionBar colors
+		actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(actionBarColor)));
+		actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(actionBarTabsColor)));
 		
 		// Add tabs to ActionBar
 		for (String tabName : tabNames) {

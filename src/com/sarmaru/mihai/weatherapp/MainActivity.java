@@ -13,6 +13,7 @@ import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -60,6 +61,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		viewPager.setAdapter(mAdapter);
 		actionBar.setHomeButtonEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		
+		// TODO get colors from shared preferences
+		
+		// ActionBar colors
+		actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.actionbar_blue)));
+		actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.actionbar_blue_dark)));
 		
 		// Add tabs to ActionBar
 		for (String tabName : tabNames) {

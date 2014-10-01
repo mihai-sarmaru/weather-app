@@ -5,4 +5,32 @@
     <color name="today_fragment_background">#FFFFFF</color>
     <color name="tomorrow_fragment_background">#ECF0F1</color>
     
+    <!-- ActionBar Colors -->
+    <color name="actionbar_turquoise">#1ABC9C</color>
+    <color name="actionbar_turquoise_dark">#16A085</color>
+    
+    <color name="actionbar_green">#2ECC71</color>
+    <color name="actionbar_green_dark">#27AE60</color>
+    
+    <color name="actionbar_blue">#3498DB</color>
+    <color name="actionbar_blue_dark">#2980B9</color>
+    
+    <color name="actionbar_purpule">#9B59B6</color>
+    <color name="actionbar_purpule_dark">#8E44AD</color>
+    
+    <color name="actionbar_indigo">#34495E</color>
+    <color name="actionbar_indigo_dark">#2C3E50</color>
+    
+    <color name="actionbar_yellow">#F1C40F</color>
+    <color name="actionbar_yellow_dark">#F39C12</color>
+    
+    <color name="actionbar_orange">#E67E22</color>
+    <color name="actionbar_orange_dark">#D35400</color>
+    
+    <color name="actionbar_red">#E74C3C</color>
+    <color name="actionbar_red_dark">#C0392B</color>
+    
+    <color name="actionbar_gray">#95A5A6</color>
+    <color name="actionbar_gray_dark">#7F8C8D</color>
+    
 </resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- Fragment colors -->
+    <color name="today_fragment_background">#FFFFFF</color>
+    <color name="tomorrow_fragment_background">#ECF0F1</color>
+    
+</resources>

@@ -8,7 +8,11 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
 import android.text.InputType;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
+import android.widget.GridView;
 
 public class WeatherPreferences {
 	
@@ -121,7 +125,7 @@ public class WeatherPreferences {
 		// Create an Alert Dialog Builder and set title
 		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 		builder.setTitle(R.string.dialog_units_title);
-		builder.setCancelable(false);
+		builder.setCancelable(true);
 		
 		// Crate a list from XML array
 		builder.setItems(R.array.weather_unit_system, new OnClickListener() {
@@ -144,5 +148,41 @@ public class WeatherPreferences {
 		// Show dialog
 		builder.show();
 	}
+	
+	// Color preferences dialog
+	public static void changeColor(final Activity activity) {
+		final WeatherPreferences wp = new WeatherPreferences(activity);
+		
+		final int[] actionBarColorArray = activity.getResources().getIntArray(R.array.actionbar_color_array);
+		final int[] actionBarTabColorArray = activity.getResources().getIntArray(R.array.actionbar_dark_color_array);
+		
+		// Create an Alert Dialog Builder and set title
+		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+		builder.setTitle(R.string.dialog_color_title);
+		builder.setCancelable(true);
+		
+		// Create a GridView to store the colors from XML
+		GridView colorGrid = new GridView(activity);
+		// Set grid adapter and number of columns
+		colorGrid.setNumColumns(3);
+		colorGrid.setAdapter(new ColorGridAdapter(activity));
+		
+		// Set color grid as the dialog's view
+		builder.setView(colorGrid);
+		
+		// Set on item click listener
+		colorGrid.setOnItemClickListener(new OnItemClickListener() {
 
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				
+				// TODO Set actionBar color preferences
+
+			}
+		});
+		
+		// Show dialog
+		builder.show();
+	}
 }

@@ -125,6 +125,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		case R.id.menu_units:
 			WeatherPreferences.changeUnits(MainActivity.this);
 			break;
+		case R.id.menu_colors:
+			WeatherPreferences.changeColor(MainActivity.this);
+			break;
 		}
 		// Return item
 		return super.onOptionsItemSelected(item);

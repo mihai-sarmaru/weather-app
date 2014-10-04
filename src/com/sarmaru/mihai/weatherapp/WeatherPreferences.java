@@ -153,9 +153,6 @@ public class WeatherPreferences {
 	public static void changeColor(final Activity activity) {
 		final WeatherPreferences wp = new WeatherPreferences(activity);
 		
-		final int[] actionBarColorArray = activity.getResources().getIntArray(R.array.actionbar_color_array);
-		final int[] actionBarTabColorArray = activity.getResources().getIntArray(R.array.actionbar_dark_color_array);
-		
 		// Create an Alert Dialog Builder and set title
 		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 		builder.setTitle(R.string.dialog_color_title);
@@ -176,8 +173,12 @@ public class WeatherPreferences {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// TODO Set actionBar color preferences
+				// Set actionBar color preferences
+				wp.setActionBarColor(ColorGridAdapter.actionBarColorArray[position]);
+				wp.setActionBarTabsColor(ColorGridAdapter.actionBarTabColorArray[position]);
 				
+				// Recreate activity
+				activity.recreate();
 			}
 		});
 		

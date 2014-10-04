@@ -176,9 +176,16 @@ public class WeatherPreferences {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				
 				// TODO Set actionBar color preferences
-
+				
+			}
+		});
+		
+		// Dialog cancel button
+		builder.setNegativeButton(R.string.dialog_negative_button, new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// This on click auto-magically cancels the dialog
 			}
 		});
 		

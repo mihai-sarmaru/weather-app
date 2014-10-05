@@ -154,7 +154,7 @@ public class WeatherPreferences {
 		final WeatherPreferences wp = new WeatherPreferences(activity);
 		
 		// Create an Alert Dialog Builder and set title
-		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+		final AlertDialog builder = new AlertDialog.Builder(activity).create();
 		builder.setTitle(R.string.dialog_color_title);
 		builder.setCancelable(true);
 		
@@ -177,13 +177,14 @@ public class WeatherPreferences {
 				wp.setActionBarColor(ColorGridAdapter.actionBarColorArray[position]);
 				wp.setActionBarTabsColor(ColorGridAdapter.actionBarTabColorArray[position]);
 				
-				// Recreate activity
+				// Dismiss dialog and recreate activity
+				builder.dismiss();
 				activity.recreate();
 			}
 		});
 		
 		// Dialog cancel button
-		builder.setNegativeButton(R.string.dialog_negative_button, new OnClickListener() {
+		builder.setButton(DialogInterface.BUTTON_NEGATIVE, activity.getText(R.string.dialog_negative_button), new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// This on click auto-magically cancels the dialog

@@ -3,7 +3,7 @@
     
     <!-- Fragment colors -->
     <color name="today_fragment_background">#FFFFFF</color>
-    <color name="tomorrow_fragment_background">#ECF0F1</color>
+    <color name="tomorrow_fragment_background">#FCFCFC</color>
     
     <!-- ActionBar Colors -->
     <color name="actionbar_turquoise">#1ABC9C</color>

@@ -6,6 +6,7 @@
     <string name="menu_location">Location</string>
     <string name="menu_units">Unit system</string>
     <string name="menu_refresh">Refresh</string>
+    <string name="menu_color">Colors</string>
     
     <string name="progress_dialog_message">Fetching weather..</string>
     
@@ -46,6 +47,7 @@
     <string name="dialog_location_title">Location</string>
     <string name="dialog_location_hint">City</string>
     <string name="dialog_units_title">Unit system</string>
+    <string name="dialog_color_title">Color</string>
     <string name="dialog_positive_button">OK</string>
     <string name="dialog_negative_button">Cancel</string>
     

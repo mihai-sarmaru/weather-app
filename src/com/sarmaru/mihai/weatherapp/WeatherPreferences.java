@@ -8,7 +8,11 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
 import android.text.InputType;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
+import android.widget.GridView;
 
 public class WeatherPreferences {
 	
@@ -20,6 +24,12 @@ public class WeatherPreferences {
 	private static final String PREF_DEFAULT_LOCATION = "London";
 	private static final String PREF_UNITS = "units";
 	private static final int PREF_DEFAULT_UNITS = WeatherObject.METRIC;
+	
+	// Color preferences
+	private static final String PREF_COLOR = "color";
+	private static final String PREF_COLOR_TABS = "darkcolor";
+	private static final int PREF_DEFAULT_COLOR = R.color.actionbar_blue;
+	private static final int PREF_DEFAULT_COLOR_TABS = R.color.actionbar_blue_dark;
 	
 	// Constructor
 	public WeatherPreferences(Activity activity) {
@@ -45,6 +55,26 @@ public class WeatherPreferences {
 	// Set location to preferences
 	void setUserUnits(int units) {
 		prefs.edit().putInt(PREF_UNITS, units).commit();
+	}
+	
+	// Get ActionBar color
+	int getActionBarColor() {
+		return prefs.getInt(PREF_COLOR, PREF_DEFAULT_COLOR);
+	}
+	
+	// Set ActionBar color
+	void setActionBarColor(int color) {
+		prefs.edit().putInt(PREF_COLOR, color).commit();
+	}
+	
+	// Get ActionBar tabs color
+	int getActionBarTabsColor() {
+		return prefs.getInt(PREF_COLOR_TABS, PREF_DEFAULT_COLOR_TABS);
+	}
+	
+	// Set ActionBar tabs color
+	void setActionBarTabsColor(int color) {
+		prefs.edit().putInt(PREF_COLOR_TABS, color).commit();
 	}
 	
 	// Location preference dialog
@@ -95,7 +125,7 @@ public class WeatherPreferences {
 		// Create an Alert Dialog Builder and set title
 		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 		builder.setTitle(R.string.dialog_units_title);
-		builder.setCancelable(false);
+		builder.setCancelable(true);
 		
 		// Crate a list from XML array
 		builder.setItems(R.array.weather_unit_system, new OnClickListener() {
@@ -118,5 +148,50 @@ public class WeatherPreferences {
 		// Show dialog
 		builder.show();
 	}
+	
+	// Color preferences dialog
+	public static void changeColor(final Activity activity) {
+		final WeatherPreferences wp = new WeatherPreferences(activity);
+		
+		// Create an Alert Dialog Builder and set title
+		final AlertDialog builder = new AlertDialog.Builder(activity).create();
+		builder.setTitle(R.string.dialog_color_title);
+		builder.setCancelable(true);
+		
+		// Create a GridView to store the colors from XML
+		GridView colorGrid = new GridView(activity);
+		// Set grid adapter and number of columns
+		colorGrid.setNumColumns(3);
+		colorGrid.setAdapter(new ColorGridAdapter(activity));
+		
+		// Set color grid as the dialog's view
+		builder.setView(colorGrid);
+		
+		// Set on item click listener
+		colorGrid.setOnItemClickListener(new OnItemClickListener() {
 
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// Set actionBar color preferences
+				wp.setActionBarColor(ColorGridAdapter.actionBarColorArray[position]);
+				wp.setActionBarTabsColor(ColorGridAdapter.actionBarTabColorArray[position]);
+				
+				// Dismiss dialog and recreate activity
+				builder.dismiss();
+				activity.recreate();
+			}
+		});
+		
+		// Dialog cancel button
+		builder.setButton(DialogInterface.BUTTON_NEGATIVE, activity.getText(R.string.dialog_negative_button), new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// This on click auto-magically cancels the dialog
+			}
+		});
+		
+		// Show dialog
+		builder.show();
+	}
 }

@@ -4,9 +4,9 @@
     <string name="app_name">WeatherApp</string>
     
     <string name="menu_location">Location</string>
-    <string name="menu_units">Unit system</string>
+    <string name="menu_units">Unit System</string>
     <string name="menu_refresh">Refresh</string>
-    <string name="menu_color">Colors</string>
+    <string name="menu_color">Interface Colors</string>
     
     <string name="progress_dialog_message">Fetching weather..</string>
     
@@ -44,10 +44,10 @@
     <string name="outdated_weather">Weather data is outdated</string>
     <string name="no_weather_data">No weather data!</string>
     
-    <string name="dialog_location_title">Location</string>
+    <string name="dialog_location_title">Change Location</string>
     <string name="dialog_location_hint">City</string>
-    <string name="dialog_units_title">Unit system</string>
-    <string name="dialog_color_title">Color</string>
+    <string name="dialog_units_title">Unit System</string>
+    <string name="dialog_color_title">Change Colors</string>
     <string name="dialog_positive_button">OK</string>
     <string name="dialog_negative_button">Cancel</string>
     

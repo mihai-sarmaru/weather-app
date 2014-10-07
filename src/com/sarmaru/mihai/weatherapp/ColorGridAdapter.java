@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.ImageView;
 
 public class ColorGridAdapter extends BaseAdapter {
 	
@@ -20,11 +19,13 @@ public class ColorGridAdapter extends BaseAdapter {
 	
 	// Private context variable
 	private Context mContext;
-	private static int[] colorArray = null;
+	private static int[] innerColorArray = null;
+	private static int[] outerColorArray = null;
 	
 	public ColorGridAdapter(Context context) {
 		this.mContext = context;
-		colorArray = context.getResources().getIntArray(R.array.actionbar_color_array);
+		innerColorArray = context.getResources().getIntArray(R.array.actionbar_color_array);
+		outerColorArray = context.getResources().getIntArray(R.array.actionbar_dark_color_array);
 	}
 
 	@Override
@@ -44,21 +45,20 @@ public class ColorGridAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// Initialize imageView
-		View imageView;
+		// Initialize circleView
+		CircleColorView circleView;
 		
 		// Recycle imageView from convertView for performance
 		if (convertView == null) {
-			imageView = new ImageView(mContext);
-			imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
-            imageView.setPadding(4, 4, 4, 4);
+			circleView = new CircleColorView(mContext);
+			circleView.setLayoutParams(new GridView.LayoutParams(100, 100));
 		} else {
-			imageView = (ImageView) convertView;
+			circleView = (CircleColorView) convertView;
 		}
 		
-		// Set imageView background color and return the view
-		imageView.setBackgroundColor(colorArray[position]);
-		return imageView;
+		// Set circleView background colors and return the view
+		circleView.setOuterCircleColor(outerColorArray[position]);
+		circleView.setInnerCircleColor(innerColorArray[position]);
+		return circleView;
 	}
-
 }

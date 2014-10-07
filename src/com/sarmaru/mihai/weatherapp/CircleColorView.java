@@ -16,8 +16,15 @@ public class CircleColorView extends View {
 	private Paint paint;
 	
 	// Radius difference constant
-	private static final int RADIUS_DIFFERENCE = 10;
-
+	private static final int CIRCLE_PADDING = 10;
+	private static final int RADIUS_DIFFERENCE = CIRCLE_PADDING + 5;
+	
+	
+	// Constructors
+	public CircleColorView(Context context) {
+		this(context, null);
+	}
+	
 	public CircleColorView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// Initialize paint
@@ -54,7 +61,7 @@ public class CircleColorView extends View {
 	
 	// Radius = smaller half value of view
 	private int getOuterCircleRadius(int halfWidth, int halfHeight) {
-		return halfWidth > halfHeight ? halfHeight : halfWidth;
+		return halfWidth > halfHeight ? halfHeight - CIRCLE_PADDING : halfWidth - CIRCLE_PADDING;
 	}
 	
 	// Radius = smaller half value of view

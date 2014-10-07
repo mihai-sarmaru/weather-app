@@ -162,6 +162,7 @@ public class WeatherPreferences {
 		GridView colorGrid = new GridView(activity);
 		// Set grid adapter and number of columns
 		colorGrid.setNumColumns(3);
+		colorGrid.setStretchMode(GridView.STRETCH_COLUMN_WIDTH);
 		colorGrid.setAdapter(new ColorGridAdapter(activity));
 		
 		// Set color grid as the dialog's view

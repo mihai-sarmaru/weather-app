@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="CircleColorView">
+	    <attr name="innerCircleColor" format="color" />
+	    <attr name="outerCircleColor" format="color" />
+	</declare-styleable>
+</resources>

@@ -23,7 +23,21 @@
     <string name="country_name">Locatie</string>
     <string name="temperature">Temperatura</string>
     <string name="description">Descriere</string>
+    <string name="precipitation">&#xf04e;</string>
+    <string name="wind">&#xf050;</string>
+    <string name="humidity">&#xf021;</string>
+    <string name="pressure">&#xf040;</string>
     <string name="days">Zile</string>
+    <string name="copyright">OpenWeatherMap.com</string>
+    
+    <string name="celsius">°C</string>
+    <string name="fahrenheit">°F</string>
+    <string name="mercury">mmHG</string>
+    <string name="pascal">hPa</string>
+    <string name="percent">%</string>
+    <string name="speed">km/h</string>
+    <string name="speed_imperial">mps</string>
+    <string name="millimeter">mm</string>
     
     <string name="api_error">Vremea nu a fost actualizata</string>
     <string name="no_internet_error">Lipsa conexiune Internet</string>
@@ -36,5 +50,24 @@
     <string name="dialog_color_title">Schimba culorile</string>
     <string name="dialog_positive_button">OK</string>
     <string name="dialog_negative_button">Anulare</string>
+    
+    <!-- API from OpenWeatherMap.com -->
+    <string name="open_weather_maps_api_key">4f787a099a90e6f7647f956036960520</string>
+    <string name="open_weather_maps_header">x-api-key</string>
+    <string name="open_weather_maps_url">http://api.openweathermap.org/data/2.5/weather?q=%s</string>
+    <string name="open_weather_maps_forecast_url">http://api.openweathermap.org/data/2.5/forecast/daily?q=%s</string>
+     
+    <!-- Weather font icons -->
+    <string name="weather_sunny">&#xf00d;</string>
+    <string name="weather_clear_night">&#xf02e;</string>
+     
+    <string name="weather_foggy">&#xf014;</string>
+    <string name="weather_cloudy">&#xf013;</string>
+    <string name="weather_rainy">&#xf019;</string>
+    <string name="weather_snowy">&#xf01b;</string>
+    <string name="weather_thunder">&#xf01e;</string>
+    <string name="weather_drizzle">&#xf01c;</string>
+    
+    <string name="thermometer">&#xf055;</string>
 
 </resources>

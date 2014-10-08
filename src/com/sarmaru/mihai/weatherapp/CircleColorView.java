@@ -15,10 +15,9 @@ public class CircleColorView extends View {
 	// Paint global variable
 	private Paint paint;
 	
-	// Radius difference constant
-	private static final int CIRCLE_PADDING = 10;
-	private static final int RADIUS_DIFFERENCE = CIRCLE_PADDING + 5;
-	
+	// Radius difference defaults
+	private int circlePadding = 10;
+	private int radiusDifference = circlePadding + 5;
 	
 	// Constructors
 	public CircleColorView(Context context) {
@@ -29,6 +28,10 @@ public class CircleColorView extends View {
 		super(context, attrs);
 		// Initialize paint
 		paint = new Paint();
+		
+		// Initialize radius and padding
+		circlePadding = context.getResources().getInteger(R.integer.circle_padding);
+		radiusDifference = circlePadding + context.getResources().getInteger(R.integer.radius_difference);
 		
 		// Get attributes from XML
 		TypedArray attrArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CircleColorView, 0, 0);
@@ -61,12 +64,12 @@ public class CircleColorView extends View {
 	
 	// Radius = smaller half value of view
 	private int getOuterCircleRadius(int halfWidth, int halfHeight) {
-		return halfWidth > halfHeight ? halfHeight - CIRCLE_PADDING : halfWidth - CIRCLE_PADDING;
+		return halfWidth > halfHeight ? halfHeight - circlePadding : halfWidth - circlePadding;
 	}
 	
 	// Radius = smaller half value of view
 	private int getInnerCircleRadius(int halfWidth, int halfHeight) {
-		return halfWidth > halfHeight ? halfHeight - RADIUS_DIFFERENCE : halfWidth - RADIUS_DIFFERENCE;
+		return halfWidth > halfHeight ? halfHeight - radiusDifference : halfWidth - radiusDifference;
 	}
 	
 	// Circle inner color getter and setter

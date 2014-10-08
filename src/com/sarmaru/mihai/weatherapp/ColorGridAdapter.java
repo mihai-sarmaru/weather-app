@@ -51,7 +51,8 @@ public class ColorGridAdapter extends BaseAdapter {
 		// Recycle imageView from convertView for performance
 		if (convertView == null) {
 			circleView = new CircleColorView(mContext);
-			circleView.setLayoutParams(new GridView.LayoutParams(100, 100));
+			int circleSize = mContext.getResources().getInteger(R.integer.circle_size);
+			circleView.setLayoutParams(new GridView.LayoutParams(circleSize, circleSize));
 		} else {
 			circleView = (CircleColorView) convertView;
 		}

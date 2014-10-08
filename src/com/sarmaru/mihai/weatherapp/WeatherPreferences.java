@@ -44,7 +44,8 @@ public class WeatherPreferences {
 	
 	// Set location to preferences
 	void setUserLocation(String location) {
-		prefs.edit().putString(PREF_LOCATION, location).commit();
+		String userLocation = location.isEmpty() ? PREF_DEFAULT_LOCATION : location;
+		prefs.edit().putString(PREF_LOCATION, userLocation).commit();
 	}
 	
 	// Get units from preferences

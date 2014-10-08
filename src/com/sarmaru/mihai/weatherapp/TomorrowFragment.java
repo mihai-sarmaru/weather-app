@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import com.sarmaru.mihai.weatherapp.adapter.Utils;
 import com.sarmaru.mihai.weatherapp.adapter.WeatherObject;
 
 import android.content.Context;
@@ -139,7 +140,7 @@ public class TomorrowFragment extends Fragment {
 	// Format temperature to remove digits
 	private static String formatForecastTemperature (String temperature) {
 		DecimalFormat df = new DecimalFormat("#");
-		return df.format(Double.parseDouble(temperature)).toString();
+		return df.format(Double.parseDouble(Utils.parseStringValue(temperature))).toString();
 	}
 	
 	// Notify user that weather info is outdated 

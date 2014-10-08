@@ -34,5 +34,10 @@ public class Utils {
 		// Return connectivity service active network info
 	    return ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() != null;
 	}
+	
+	// Replace comma with dot
+	public static String parseStringValue(String value) {
+		return value.replace(",", ".");
+	}
 
 }

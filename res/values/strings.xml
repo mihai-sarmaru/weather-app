@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">WeatherApp</string>
+    <string name="app_name">Weather</string>
     
     <string name="menu_location">Location</string>
     <string name="menu_units">Unit System</string>

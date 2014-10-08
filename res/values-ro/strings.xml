@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Vremea</string>
+    
+    <string name="menu_location">Locatie</string>
+    <string name="menu_units">Unitati masura</string>
+    <string name="menu_refresh">Reimprospatare</string>
+    <string name="menu_color">Culori interfata</string>
+    
+    <string name="progress_dialog_message">Actualizare vreme..</string>
+    
+    <string-array name="weather_tab_names">
+        <item>Astazi</item>
+        <item>Maine</item>
+    </string-array>
+    
+    <string-array name="weather_unit_system">
+        <item>Metric</item>
+        <item>Imperial</item>
+    </string-array>
+    
+    <string name="country_name">Locatie</string>
+    <string name="temperature">Temperatura</string>
+    <string name="description">Descriere</string>
+    <string name="days">Zile</string>
+    
+    <string name="api_error">Vremea nu a fost actualizata</string>
+    <string name="no_internet_error">Lipsa conexiune Internet</string>
+    <string name="outdated_weather">Vremea nu este actualizata</string>
+    <string name="no_weather_data">Nu exista prognoza!</string>
+    
+    <string name="dialog_location_title">Schimba locatia</string>
+    <string name="dialog_location_hint">Oras</string>
+    <string name="dialog_units_title">Sistem de masura</string>
+    <string name="dialog_color_title">Schimba culorile</string>
+    <string name="dialog_positive_button">OK</string>
+    <string name="dialog_negative_button">Anulare</string>
+
+</resources>

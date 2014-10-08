@@ -99,7 +99,7 @@ public class WeatherObject {
 	}
 	public void setTemperature (String temperature) {
 		DecimalFormat df = new DecimalFormat("#.#");
-		this._temperature = df.format(Double.parseDouble(temperature)).toString();
+		this._temperature = df.format(Double.parseDouble(Utils.parseStringValue(temperature))).toString();
 	}
 	
 	public String getDescription() {
@@ -124,7 +124,7 @@ public class WeatherObject {
 			this._wind = wind;
 		} else {
 			DecimalFormat df = new DecimalFormat("#.#");
-			this._wind = df.format(Double.parseDouble(wind)).toString();
+			this._wind = df.format(Double.parseDouble(Utils.parseStringValue(wind))).toString();
 		}
 	}
 	
@@ -143,7 +143,7 @@ public class WeatherObject {
 			this._pressure = pressure;
 		} else {
 			DecimalFormat df = new DecimalFormat("#");
-			this._pressure = df.format(Double.parseDouble(pressure)).toString();
+			this._pressure = df.format(Double.parseDouble(Utils.parseStringValue(pressure))).toString();
 		}
 	}
 	

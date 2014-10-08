@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- CircleColorView integers -->
+    <integer name="circle_padding">10</integer>
+    <integer name="radius_difference">7</integer>
+    
+    <!-- Size -->
+    <integer name="circle_size">90</integer>
+    
+</resources>
